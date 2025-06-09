@@ -158,7 +158,6 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* SCROLLING TEXT STYLES */
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-size: 2rem;
@@ -167,17 +166,18 @@
       align-items: center;
       flex-wrap: wrap;
       margin-bottom: 1rem;
+      text-align: center;
+      margin-top: 1rem;
     }
 
     .static-text {
-      white-space: nowrap;
+      margin-right: 0.5rem;
     }
 
     .scroll-container {
-      margin-left: 10px;
-      height: 2.4rem;
+      height: 2rem;
       overflow: hidden;
-      width: 200px;
+      width: 180px;
       position: relative;
     }
 
@@ -191,8 +191,8 @@
     }
 
     .scroll-text div {
-      height: 2.4rem;
-      line-height: 2.4rem;
+      height: 2rem;
+      line-height: 2rem;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -200,7 +200,7 @@
 
     @keyframes scrollUp {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); }
+      100% { transform: translateY(-100%); }
     }
 
     @media (max-width: 768px) {
@@ -230,13 +230,13 @@
       }
 
       .scroll-wrapper {
-        font-size: 1.5rem;
         flex-direction: column;
+        font-size: 1.8rem;
       }
 
       .scroll-container {
-        width: 180px;
-        margin-left: 0;
+        width: 100%;
+        margin-top: 0.5rem;
       }
     }
   </style>
@@ -260,6 +260,8 @@
   </header>
 
   <section class="hero">
+    <h1>Welcome to Creative365</h1>
+
     <div class="scroll-wrapper">
       <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
       <div class="scroll-container">
@@ -268,6 +270,7 @@
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
           <div>A NEW WEBSITE</div>
+          <!-- Duplicate for seamless loop -->
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
@@ -275,6 +278,7 @@
         </div>
       </div>
     </div>
+
     <p class="subtext">Empowering Artists and Entrepreneurs to Build Thriving Careers.</p>
     <button class="hero-button">LET'S CHAT</button>
   </section>
