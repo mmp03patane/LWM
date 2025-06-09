@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seamless Vertical Scrolling Text</title>
+  <title>Scrolling Text in Panel</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -11,21 +11,40 @@
       padding: 0;
       font-family: 'Oswald', sans-serif;
       background-color: #f8f8f8;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+
+    .hero, .panel, .cta {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      text-align: center;
+      animation: slideUp 0.8s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .scroll-wrapper {
-      background-color: #ffffff;
-      color: #000000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-size: 20px;
+      color: #000000;
+      background-color: #ffffff;
+      padding: 10px 20px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
     }
 
     .static-text {
@@ -64,19 +83,21 @@
   </style>
 </head>
 <body>
-  <div class="scroll-wrapper">
-    <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
-    <div class="scroll-container">
-      <div class="scroll-text">
-        <div>FACEBOOK ADS</div>
-        <div>INSTAGRAM ADS</div>
-        <div>GOOGLE ADS</div>
-        <div>A NEW WEBSITE</div>
-        <!-- Duplicated for seamless loop -->
-        <div>FACEBOOK ADS</div>
-        <div>INSTAGRAM ADS</div>
-        <div>GOOGLE ADS</div>
-        <div>A NEW WEBSITE</div>
+  <div class="panel">
+    <div class="scroll-wrapper">
+      <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
+      <div class="scroll-container">
+        <div class="scroll-text">
+          <div>FACEBOOK ADS</div>
+          <div>INSTAGRAM ADS</div>
+          <div>GOOGLE ADS</div>
+          <div>A NEW WEBSITE</div>
+          <!-- Duplicated for seamless loop -->
+          <div>FACEBOOK ADS</div>
+          <div>INSTAGRAM ADS</div>
+          <div>GOOGLE ADS</div>
+          <div>A NEW WEBSITE</div>
+        </div>
       </div>
     </div>
   </div>
