@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scrolling Text Example</title>
+  <title>Scrolling Text Ending</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -16,47 +16,60 @@
       font-family: 'Oswald', sans-serif;
     }
 
-    .scroll-container {
-      width: 320px;
-      height: 40px;
-      overflow: hidden;
+    .scroll-wrapper {
       background-color: #ffffff;
       color: #000000;
       font-size: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .static-text {
+      white-space: nowrap;
+    }
+
+    .scroll-container {
+      height: 24px;
+      overflow: hidden;
+      margin-left: 8px;
       position: relative;
-      text-align: center;
+      width: 160px;
     }
 
     .scroll-text {
       position: absolute;
-      animation: scrollUp 4s linear infinite;
+      animation: scrollUp 3s linear infinite;
     }
 
     .scroll-text div {
-      height: 40px;
+      height: 24px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     @keyframes scrollUp {
       0% { top: 0; }
-      25% { top: -40px; }
-      50% { top: -80px; }
-      75% { top: -120px; }
+      25% { top: -24px; }
+      50% { top: -48px; }
+      75% { top: -72px; }
       100% { top: 0; }
     }
   </style>
 </head>
 <body>
-  <div class="scroll-container">
-    <div class="scroll-text">
-      <div>LET'S GROW YOUR BUSINESS WITH FACEBOOK ADS</div>
-      <div>LET'S GROW YOUR BUSINESS WITH INSTAGRAM ADS</div>
-      <div>LET'S GROW YOUR BUSINESS WITH GOOGLE ADS</div>
-      <div>LET'S GROW YOUR BUSINESS WITH A NEW WEBSITE</div>
+  <div class="scroll-wrapper">
+    <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
+    <div class="scroll-container">
+      <div class="scroll-text">
+        <div>FACEBOOK ADS</div>
+        <div>INSTAGRAM ADS</div>
+        <div>GOOGLE ADS</div>
+        <div>A NEW WEBSITE</div>
+      </div>
     </div>
   </div>
 </body>
