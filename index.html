@@ -1,9 +1,13 @@
+
+html
+Copy
+Edit
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scrolling Text Ending</title>
+  <title>Smooth Scrolling Text</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -25,6 +29,7 @@
       padding: 10px 20px;
       display: flex;
       align-items: center;
+      overflow: hidden;
     }
 
     .static-text {
@@ -40,8 +45,9 @@
     }
 
     .scroll-text {
-      position: absolute;
-      animation: scrollUp 3s linear infinite;
+      display: flex;
+      flex-direction: column;
+      animation: scrollLoop 8s linear infinite;
     }
 
     .scroll-text div {
@@ -51,12 +57,9 @@
       justify-content: flex-start;
     }
 
-    @keyframes scrollUp {
-      0% { top: 0; }
-      25% { top: -24px; }
-      50% { top: -48px; }
-      75% { top: -72px; }
-      100% { top: 0; }
+    @keyframes scrollLoop {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(-96px); } /* 4 items * 24px */
     }
   </style>
 </head>
@@ -65,6 +68,11 @@
     <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
     <div class="scroll-container">
       <div class="scroll-text">
+        <div>FACEBOOK ADS</div>
+        <div>INSTAGRAM ADS</div>
+        <div>GOOGLE ADS</div>
+        <div>A NEW WEBSITE</div>
+        <!-- Clone for seamless scroll -->
         <div>FACEBOOK ADS</div>
         <div>INSTAGRAM ADS</div>
         <div>GOOGLE ADS</div>
