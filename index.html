@@ -158,26 +158,22 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
+    /* SCROLLING TEXT STYLES */
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-size: 2rem;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    .static-text {
-      margin-right: 0.5rem;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
 
     .scroll-container {
-      height: 2rem;
+      height: 32px;
       overflow: hidden;
-      width: 180px;
+      width: 200px;
       position: relative;
     }
 
@@ -191,16 +187,26 @@
     }
 
     .scroll-text div {
-      height: 2rem;
-      line-height: 2rem;
+      height: 32px;
+      line-height: 32px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
     }
 
+    .line-break-desktop {
+      display: none;
+    }
+
     @keyframes scrollUp {
       0% { transform: translateY(0); }
       100% { transform: translateY(-100%); }
+    }
+
+    @media (min-width: 769px) {
+      .line-break-desktop {
+        display: inline;
+      }
     }
 
     @media (max-width: 768px) {
@@ -228,16 +234,6 @@
         padding: 2rem 1.2rem;
         margin: 2rem 1rem;
       }
-
-      .scroll-wrapper {
-        flex-direction: column;
-        font-size: 1.8rem;
-      }
-
-      .scroll-container {
-        width: 100%;
-        margin-top: 0.5rem;
-      }
     }
   </style>
 </head>
@@ -260,17 +256,20 @@
   </header>
 
   <section class="hero">
-    <h1>Welcome to Creative365</h1>
-
+    <!-- SCROLLING TEXT SECTION -->
     <div class="scroll-wrapper">
-      <div class="static-text">LET'S GROW YOUR BUSINESS WITH</div>
+      <div class="line-wrap">
+        <span class="line-part">LET'S GROW YOUR BUSINESS</span>
+        <span class="line-break-desktop"><br></span>
+        <span class="line-part">WITH</span>
+      </div>
       <div class="scroll-container">
         <div class="scroll-text">
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
           <div>A NEW WEBSITE</div>
-          <!-- Duplicate for seamless loop -->
+          <!-- Repeat for seamless loop -->
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
@@ -279,6 +278,8 @@
       </div>
     </div>
 
+    <!-- ORIGINAL HERO CONTENT -->
+    <h1>Welcome to Creative365</h1>
     <p class="subtext">Empowering Artists and Entrepreneurs to Build Thriving Careers.</p>
     <button class="hero-button">LET'S CHAT</button>
   </section>
