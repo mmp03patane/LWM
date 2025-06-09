@@ -8,10 +8,8 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
     }
-
     body {
       font-family: 'Nunito Sans', sans-serif;
       background-color: #f7f7f7;
@@ -20,7 +18,6 @@
       font-size: 1.15rem;
       text-align: center;
     }
-
     header {
       background-color: #000;
       color: #fff;
@@ -30,15 +27,12 @@
       align-items: center;
       position: relative;
     }
-
     .logo img {
       height: 30px;
     }
-
     nav.desktop-nav {
       display: block;
     }
-
     nav.desktop-nav a {
       color: #fff;
       text-decoration: none;
@@ -46,7 +40,6 @@
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
     }
-
     .hamburger-menu {
       display: none;
       width: 30px;
@@ -56,13 +49,11 @@
       justify-content: space-between;
       z-index: 20;
     }
-
     .hamburger-menu .bar {
       height: 3px;
       background-color: #fff;
       width: 100%;
     }
-
     nav.mobile-nav {
       display: none;
       position: absolute;
@@ -73,11 +64,9 @@
       z-index: 15;
       text-align: center;
     }
-
     nav.mobile-nav.open {
       display: block;
     }
-
     nav.mobile-nav a {
       color: #fff;
       display: block;
@@ -86,8 +75,7 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Hero and scroll text styling */
-
+    /* Hero section */
     .hero {
       max-width: 700px;
       margin: 3rem auto;
@@ -100,50 +88,52 @@
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 2.5rem;
-      line-height: 1.2;
       color: #000;
       user-select: none;
+      text-align: center;
     }
 
-    .line1 {
+    /* Desktop lines */
+    .desktop-line1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
       display: block;
     }
 
-    .line2-container {
+    .desktop-line2 {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
+      font-size: 2.5rem;
+      line-height: 1.2;
       white-space: nowrap;
       margin-top: 0.5rem;
     }
-
-    .line2-text {
+    .desktop-line2 span:first-child {
       flex-shrink: 0;
     }
 
+    /* Scrolling text container */
     .scroll-container {
       position: relative;
       overflow: hidden;
-      height: 48px; /* height of one scroll item */
+      height: 48px;
       width: 240px;
       display: inline-block;
       vertical-align: middle;
     }
-
     .scroll-text {
       position: absolute;
       animation: scrollUp 6s linear infinite;
       display: flex;
       flex-direction: column;
-      font-size: 2.5rem;
-      line-height: 48px;
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 48px;
       color: #000;
     }
-
     .scroll-text div {
       height: 48px;
       display: flex;
@@ -156,20 +146,13 @@
       100% { transform: translateY(-100%); }
     }
 
-    /* Other panels and buttons */
-
-    .panel, .cta {
-      max-width: 800px;
-      margin: 3rem auto;
-      background: #fff;
-      padding: 2rem;
-      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-      border-radius: 12px;
-      text-align: center;
-      animation: slideUp 0.8s ease forwards;
+    /* Mobile layout overrides */
+    .mobile-line1, .mobile-line2, .mobile-scroll {
+      display: none;
     }
 
-    .hero-button, .cta button {
+    /* Button */
+    .hero-button {
       background-color: #78C976;
       color: #fff;
       border: none;
@@ -181,11 +164,20 @@
       cursor: pointer;
       margin-top: 1.5rem;
       transition: background-color 0.3s ease;
-      animation: slideInLeft 1s ease forwards;
+    }
+    .hero-button:hover {
+      background-color: #5fae60;
     }
 
-    .hero-button:hover, .cta button:hover {
-      background-color: #5fae60;
+    /* Other panels and buttons */
+    .panel, .cta {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: #fff;
+      padding: 2rem;
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      text-align: center;
     }
 
     .profile-photo {
@@ -207,80 +199,56 @@
       margin-right: 5px;
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    @keyframes slideInLeft {
-      from { transform: translateX(-50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* Responsive styles */
-
-    @media (max-width: 768px) {
-      header {
-        flex-wrap: wrap;
-      }
-
-      nav.desktop-nav {
+    /* Responsive for mobile */
+    @media (max-width: 767px) {
+      /* Hide desktop version */
+      .desktop-line1, .desktop-line2 {
         display: none;
       }
 
-      .hamburger-menu {
-        display: flex;
-      }
-
-      .hero-button, .cta button {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-      }
-
-      .scroll-wrapper {
-        font-size: 1.7rem;
-      }
-
-      .line1 {
+      /* Show mobile lines */
+      .mobile-line1, .mobile-line2, .mobile-scroll {
         display: block;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        color: #000;
+        text-align: center;
+        user-select: none;
+      }
+      .mobile-line1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
         margin-bottom: 0.25rem;
       }
-
-      .line2-container {
-        flex-direction: column;
-        gap: 0.25rem;
-        margin-top: 0;
-        white-space: normal;
+      .mobile-line2 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
       }
 
-      .line2-text {
-        display: block;
+      .mobile-scroll {
+        position: relative;
+        overflow: hidden;
+        height: 48px;
+        width: 240px;
+        margin: 0 auto;
       }
-
-      .scroll-container {
-        width: 180px;
-        height: 36px;
-      }
-
       .scroll-text {
-        font-size: 1.7rem;
-        line-height: 36px;
+        position: absolute !important;
+        animation: scrollUp 6s linear infinite;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 48px;
+        color: #000;
       }
-
       .scroll-text div {
-        height: 36px;
-      }
-
-      .hero {
-        max-width: 90%;
-        margin: 2rem auto;
-        padding: 1.5rem;
-      }
-
-      .panel, .cta {
-        max-width: 90%;
-        margin: 2rem auto;
-        padding: 1.5rem;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* center on mobile */
       }
     }
   </style>
@@ -304,19 +272,18 @@
   </header>
 
   <section class="hero" role="banner" aria-label="Marketing message">
-    <div class="scroll-wrapper" aria-live="polite" aria-atomic="true">
-      <span class="line1">LET'S GROW YOUR BUSINESS</span>
-
-      <div class="line2-container" role="group" aria-label="Business growth tools">
-        <span class="line2-text">WITH</span>
-
+    <!-- Desktop version -->
+    <div class="scroll-wrapper desktop-hero">
+      <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
+      <div class="desktop-line2" aria-label="Business growth tools">
+        <span>WITH</span>
         <div class="scroll-container" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
           <div class="scroll-text" aria-hidden="true">
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
             <div>A NEW WEBSITE</div>
-            <!-- Repeat for smooth scroll -->
+            <!-- repeat for smooth scroll -->
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
@@ -325,6 +292,26 @@
         </div>
       </div>
     </div>
+
+    <!-- Mobile version -->
+    <div class="scroll-wrapper mobile-hero" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
+      <span class="mobile-line1">LET'S GROW YOUR</span>
+      <span class="mobile-line2">BUSINESS WITH</span>
+      <div class="mobile-scroll">
+        <div class="scroll-text" aria-hidden="true">
+          <div>FACEBOOK ADS</div>
+          <div>INSTAGRAM ADS</div>
+          <div>GOOGLE ADS</div>
+          <div>A NEW WEBSITE</div>
+          <!-- repeat for smooth scroll -->
+          <div>FACEBOOK ADS</div>
+          <div>INSTAGRAM ADS</div>
+          <div>GOOGLE ADS</div>
+          <div>A NEW WEBSITE</div>
+        </div>
+      </div>
+    </div>
+
     <button class="hero-button">LET'S CHAT</button>
   </section>
 
