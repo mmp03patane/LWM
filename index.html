@@ -158,7 +158,8 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* SCROLLING TEXT STYLES */
+    /* Scroll Wrapper and text */
+
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-size: 2rem;
@@ -167,14 +168,23 @@
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 2rem;
+      margin: 2rem 0 0 0;
+      text-align: center;
+      color: #000;
+    }
+
+    .scroll-wrapper .line-part {
+      white-space: nowrap;
     }
 
     .scroll-container {
-      height: 32px;
+      margin-left: 0.5rem;
+      height: 40px;
       overflow: hidden;
-      width: 200px;
+      width: 220px;
       position: relative;
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .scroll-text {
@@ -184,18 +194,15 @@
       display: flex;
       flex-direction: column;
       animation: scrollUp 6s linear infinite;
+      font-weight: 700;
     }
 
     .scroll-text div {
-      height: 32px;
-      line-height: 32px;
+      height: 40px;
+      line-height: 40px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-    }
-
-    .line-break-desktop {
-      display: none;
     }
 
     @keyframes scrollUp {
@@ -203,36 +210,39 @@
       100% { transform: translateY(-100%); }
     }
 
+    /* Desktop: line break after first part */
     @media (min-width: 769px) {
-      .line-break-desktop {
-        display: inline;
+      .scroll-wrapper {
+        flex-direction: column;
+      }
+      .scroll-wrapper .line-part.desktop-break {
+        display: block;
+        width: 100%;
+      }
+      .scroll-wrapper .line-part:not(.desktop-break) {
+        display: inline-block;
       }
     }
 
+    /* Mobile: inline everything */
     @media (max-width: 768px) {
-      header {
-        flex-wrap: wrap;
+      .scroll-wrapper {
+        flex-direction: row;
       }
-
-      nav.desktop-nav {
-        display: none;
+      .scroll-wrapper .line-part {
+        display: inline;
       }
-
-      .hamburger-menu {
-        display: flex;
+      .scroll-container {
+        width: 150px;
+        height: 30px;
       }
-
-      .hero h1, .panel h2, .cta h2 {
-        font-size: 2.2rem;
+      .scroll-text div {
+        height: 30px;
+        line-height: 30px;
       }
-
-      .hero .subtext, .panel p, .cta p, .cta ul li {
-        font-size: 1.2rem;
-      }
-
-      .hero, .panel, .cta {
-        padding: 2rem 1.2rem;
-        margin: 2rem 1rem;
+      .scroll-wrapper {
+        font-size: 1.5rem;
+        margin: 1rem 0 0 0;
       }
     }
   </style>
@@ -256,15 +266,15 @@
   </header>
 
   <section class="hero">
-    <!-- SCROLLING TEXT SECTION -->
+    <h1>Welcome to Creative365</h1>
+    <p class="subtext">Empowering Artists and Entrepreneurs to Build Thriving Careers.</p>
+
+    <!-- Scrolling Text inserted here -->
     <div class="scroll-wrapper">
-      <div class="line-wrap">
-        <span class="line-part">LET'S GROW YOUR BUSINESS</span>
-        <span class="line-break-desktop"><br></span>
-        <span class="line-part">WITH</span>
-      </div>
-      <div class="scroll-container">
-        <div class="scroll-text">
+      <span class="line-part desktop-break">LET'S GROW YOUR BUSINESS</span>
+      <span class="line-part">WITH</span>
+      <div class="scroll-container" aria-label="Scrolling list of services">
+        <div class="scroll-text" aria-live="polite" aria-atomic="true">
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
@@ -278,9 +288,6 @@
       </div>
     </div>
 
-    <!-- ORIGINAL HERO CONTENT -->
-    <h1>Welcome to Creative365</h1>
-    <p class="subtext">Empowering Artists and Entrepreneurs to Build Thriving Careers.</p>
     <button class="hero-button">LET'S CHAT</button>
   </section>
 
