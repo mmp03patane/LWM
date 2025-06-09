@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smooth Vertical Scroll Ending</title>
+  <title>Seamless Vertical Scrolling Text</title>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet" />
   <style>
     body {
-      background-color: #f8f8f8;
       margin: 0;
       padding: 0;
       font-family: 'Oswald', sans-serif;
+      background-color: #f8f8f8;
       height: 100vh;
       display: flex;
       align-items: center;
@@ -33,36 +33,33 @@
     }
 
     .scroll-container {
-      width: 150px;
+      margin-left: 10px;
       height: 24px;
       overflow: hidden;
-      margin-left: 10px;
+      width: 160px;
       position: relative;
     }
 
     .scroll-text {
+      position: absolute;
+      top: 0;
+      left: 0;
       display: flex;
       flex-direction: column;
-      animation: scroll 8s linear infinite;
+      animation: scrollUp 6s linear infinite;
     }
 
     .scroll-text div {
       height: 24px;
+      line-height: 24px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
     }
 
-    @keyframes scroll {
-      0%    { transform: translateY(0); }
-      12.5% { transform: translateY(-24px); }
-      25%   { transform: translateY(-48px); }
-      37.5% { transform: translateY(-72px); }
-      50%   { transform: translateY(-96px); }
-      62.5% { transform: translateY(-120px); }
-      75%   { transform: translateY(-144px); }
-      87.5% { transform: translateY(-168px); }
-      100%  { transform: translateY(-192px); }
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
     }
   </style>
 </head>
@@ -75,7 +72,7 @@
         <div>INSTAGRAM ADS</div>
         <div>GOOGLE ADS</div>
         <div>A NEW WEBSITE</div>
-        <!-- Repeat for seamless loop -->
+        <!-- Duplicated for seamless loop -->
         <div>FACEBOOK ADS</div>
         <div>INSTAGRAM ADS</div>
         <div>GOOGLE ADS</div>
