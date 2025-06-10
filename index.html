@@ -8,8 +8,7 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
     }
     body {
       font-family: 'Nunito Sans', sans-serif;
@@ -76,8 +75,9 @@
       font-family: 'Roboto', sans-serif;
     }
 
+    /* Hero section */
     .hero {
-      max-width: 800px;
+      max-width: 700px;
       margin: 3rem auto;
       background: white;
       padding: 2rem;
@@ -96,49 +96,49 @@
     .desktop-line1 {
       font-size: 2.5rem;
       line-height: 1.2;
-      display: block;
+      margin-bottom: 0.5rem;
     }
 
-    .desktop-line2 {
+    .desktop-line2-inline {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
       font-size: 2.5rem;
       line-height: 1.2;
-      white-space: nowrap;
-      margin-top: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .desktop-line2 .label {
-      margin-bottom: 0.25rem;
+    .label-inline {
+      color: #000;
     }
 
-    .scroll-container {
+    .scroll-container-inline {
       position: relative;
       overflow: hidden;
       height: 48px;
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
+      flex-grow: 1;
+      max-width: 500px;
+      min-width: 200px;
     }
-    .scroll-text {
+
+    .scroll-container-inline .scroll-text {
       position: absolute;
       animation: scrollUp 6s linear infinite;
       display: flex;
       flex-direction: column;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 2.5rem;
-      line-height: 48px;
-      color: #000;
       width: 100%;
-      text-align: center;
+      text-align: left;
+      color: #000;
     }
-    .scroll-text div {
+
+    .scroll-container-inline .scroll-text div {
       height: 48px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     @keyframes scrollUp {
@@ -197,19 +197,16 @@
     }
 
     @media (max-width: 767px) {
-      .hero,
-      .panel,
-      .cta {
-        width: 90%;
-        margin: 2rem auto;
-        padding: 1.5rem;
-      }
-
-      .desktop-line1, .desktop-line2 {
+      .desktop-line1,
+      .desktop-line2-inline,
+      .label-inline,
+      .scroll-container-inline {
         display: none;
       }
 
-      .mobile-line1, .mobile-line2, .mobile-scroll {
+      .mobile-line1,
+      .mobile-line2,
+      .mobile-scroll {
         display: block;
         font-family: 'Oswald', sans-serif;
         font-weight: 700;
@@ -217,13 +214,15 @@
         text-align: center;
         user-select: none;
       }
+
       .mobile-line1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 0.25rem;
       }
+
       .mobile-line2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 0.5rem;
       }
@@ -233,29 +232,27 @@
         overflow: hidden;
         height: 48px;
         width: 100%;
+        max-width: 100%;
         margin: 0 auto;
       }
 
-      .scroll-container {
-        width: 100% !important;
-      }
-
-      .scroll-text {
-        width: 100%;
-        text-align: center;
-        font-size: 2.2rem;
-      }
-
-      .scroll-text div {
-        justify-content: center;
-      }
-
-      .hamburger-menu {
+      .mobile-scroll .scroll-text {
+        position: absolute;
+        animation: scrollUp 6s linear infinite;
         display: flex;
+        flex-direction: column;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 48px;
+        color: #000;
       }
 
-      nav.desktop-nav {
-        display: none;
+      .mobile-scroll .scroll-text div {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   </style>
@@ -279,11 +276,12 @@
   </header>
 
   <section class="hero">
+    <!-- Desktop version -->
     <div class="scroll-wrapper desktop-hero">
-      <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
-      <div class="desktop-line2">
-        <div class="label">WITH</div>
-        <div class="scroll-container">
+      <div class="desktop-line1">LET'S GROW YOUR BUSINESS</div>
+      <div class="desktop-line2-inline">
+        <span class="label-inline">WITH&nbsp;</span>
+        <div class="scroll-container-inline">
           <div class="scroll-text">
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
@@ -298,6 +296,7 @@
       </div>
     </div>
 
+    <!-- Mobile version -->
     <div class="scroll-wrapper mobile-hero">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
