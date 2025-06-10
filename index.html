@@ -75,15 +75,14 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Hero section - FIXED WIDTH */
+    /* Match panel/cta sizing */
     .hero {
-      max-width: 800px; /* changed from 700px */
+      max-width: 800px;
       margin: 3rem auto;
       background: white;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      text-align: center;
     }
 
     .scroll-wrapper {
@@ -94,7 +93,6 @@
       text-align: center;
     }
 
-    /* Desktop lines */
     .desktop-line1 {
       font-size: 2.5rem;
       line-height: 1.2;
@@ -115,7 +113,6 @@
       flex-shrink: 0;
     }
 
-    /* Scrolling text container */
     .scroll-container {
       position: relative;
       overflow: hidden;
@@ -147,12 +144,10 @@
       100% { transform: translateY(-100%); }
     }
 
-    /* Mobile layout overrides */
     .mobile-line1, .mobile-line2, .mobile-scroll {
       display: none;
     }
 
-    /* Button */
     .hero-button {
       background-color: #78C976;
       color: #fff;
@@ -170,7 +165,6 @@
       background-color: #5fae60;
     }
 
-    /* Other panels and buttons */
     .panel, .cta {
       max-width: 800px;
       margin: 3rem auto;
@@ -200,7 +194,6 @@
       margin-right: 5px;
     }
 
-    /* Responsive for mobile */
     @media (max-width: 767px) {
       .desktop-line1, .desktop-line2 {
         display: none;
@@ -214,7 +207,6 @@
         text-align: center;
         user-select: none;
       }
-
       .mobile-line1 {
         font-size: 2.5rem;
         line-height: 1.2;
@@ -272,7 +264,6 @@
   </header>
 
   <section class="hero" role="banner" aria-label="Marketing message">
-    <!-- Desktop version -->
     <div class="scroll-wrapper desktop-hero">
       <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
       <div class="desktop-line2" aria-label="Business growth tools">
@@ -292,7 +283,6 @@
       </div>
     </div>
 
-    <!-- Mobile version -->
     <div class="scroll-wrapper mobile-hero" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
