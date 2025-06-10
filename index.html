@@ -96,7 +96,7 @@
     .desktop-line1 {
       font-size: 2.5rem;
       line-height: 1.2;
-      margin-bottom: 0.5rem;
+      display: block;
     }
 
     .desktop-line2-inline {
@@ -107,12 +107,11 @@
       font-weight: 700;
       font-size: 2.5rem;
       line-height: 1.2;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 0.5rem;
-    }
-
-    .label-inline {
-      color: #000;
+      white-space: nowrap;
+      width: 100%;
+      max-width: 100%;
     }
 
     .scroll-container-inline {
@@ -120,21 +119,23 @@
       overflow: hidden;
       height: 48px;
       flex-grow: 1;
-      max-width: 500px;
       min-width: 200px;
+      max-width: 100%;
+      text-align: left;
     }
 
-    .scroll-container-inline .scroll-text {
+    .scroll-text {
       position: absolute;
       animation: scrollUp 6s linear infinite;
       display: flex;
       flex-direction: column;
-      width: 100%;
-      text-align: left;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 48px;
       color: #000;
     }
-
-    .scroll-container-inline .scroll-text div {
+    .scroll-text div {
       height: 48px;
       display: flex;
       align-items: center;
@@ -197,16 +198,11 @@
     }
 
     @media (max-width: 767px) {
-      .desktop-line1,
-      .desktop-line2-inline,
-      .label-inline,
-      .scroll-container-inline {
+      .desktop-line1, .desktop-line2-inline {
         display: none;
       }
 
-      .mobile-line1,
-      .mobile-line2,
-      .mobile-scroll {
+      .mobile-line1, .mobile-line2, .mobile-scroll {
         display: block;
         font-family: 'Oswald', sans-serif;
         font-weight: 700;
@@ -214,44 +210,24 @@
         text-align: center;
         user-select: none;
       }
-
       .mobile-line1 {
         font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 0.25rem;
       }
-
       .mobile-line2 {
         font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 0.5rem;
       }
-
       .mobile-scroll {
         position: relative;
         overflow: hidden;
         height: 48px;
         width: 100%;
-        max-width: 100%;
         margin: 0 auto;
       }
-
-      .mobile-scroll .scroll-text {
-        position: absolute;
-        animation: scrollUp 6s linear infinite;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        font-size: 2.5rem;
-        line-height: 48px;
-        color: #000;
-      }
-
-      .mobile-scroll .scroll-text div {
-        height: 48px;
-        display: flex;
-        align-items: center;
+      .scroll-text div {
         justify-content: center;
       }
     }
@@ -275,12 +251,11 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <!-- Desktop version -->
+  <section class="hero" role="banner" aria-label="Marketing message">
     <div class="scroll-wrapper desktop-hero">
-      <div class="desktop-line1">LET'S GROW YOUR BUSINESS</div>
+      <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
       <div class="desktop-line2-inline">
-        <span class="label-inline">WITH&nbsp;</span>
+        <span>WITH</span>
         <div class="scroll-container-inline">
           <div class="scroll-text">
             <div>FACEBOOK ADS</div>
@@ -296,7 +271,6 @@
       </div>
     </div>
 
-    <!-- Mobile version -->
     <div class="scroll-wrapper mobile-hero">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
