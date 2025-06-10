@@ -106,7 +106,7 @@
       gap: 0.5rem;
       font-size: 2.5rem;
       line-height: 1.2;
-      white-space: nowrap;
+      white-space: nowrap; /* Ensures "WITH" and scrolling text stay on one line */
       margin-top: 0.5rem;
     }
     .desktop-line2 span:first-child {
@@ -116,10 +116,12 @@
     .scroll-container {
       position: relative;
       overflow: hidden;
-      height: 48px;
-      width: 240px;
+      height: 48px; /* This height matches your line-height for a single visible item */
+      /* REMOVED: width: 240px; */
       display: inline-block;
       vertical-align: middle;
+      /* Added for desktop only to allow content to dictate width */
+      max-width: fit-content; /* This allows the container to shrink-wrap its content */
     }
     .scroll-text {
       position: absolute;
@@ -128,20 +130,23 @@
       flex-direction: column;
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 2.5rem; /* Desktop font size */
       line-height: 48px;
       color: #000;
+      /* Added: Ensure the text fills the container horizontally */
+      width: 100%; /* Important for the scrolling list items to fill the container's width */
     }
     .scroll-text div {
       height: 48px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: flex-start; /* Keep left alignment for desktop */
+      white-space: nowrap; /* Prevent text wrapping inside the scrolling item */
     }
 
     @keyframes scrollUp {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-100%); }
+      100% { transform: translateY(-50%); /* Adjusted: Scrolls up by half its height */ }
     }
 
     .mobile-line1, .mobile-line2, .mobile-scroll {
@@ -181,7 +186,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba  (0,0,0,0.1);
     }
 
     ul {
@@ -229,24 +234,34 @@
       .mobile-scroll {
         position: relative;
         overflow: hidden;
-        height: 48px;
-        width: 100%;
+        height: 48px; /* Match desktop height for now, adjust if needed */
+        width: 100%; /* Important for mobile to span full width */
         margin: 0 auto;
       }
 
-      .scroll-container {
-        width: 100% !important;
+      /* Re-applying mobile-specific scroll container and text styles */
+      .scroll-container { /* This targets the desktop one, but we hide it anyway */
+        display: none; /* Ensure desktop scroll-container is hidden on mobile */
       }
 
-      .scroll-text {
+      .mobile-scroll .scroll-text { /* Target the scroll-text within mobile-scroll */
         width: 100%;
         text-align: center;
-        font-size: 2.2rem;
+        font-size: 2.2rem; /* Mobile font size */
+        animation: scrollUpMobile 6s linear infinite; /* Separate animation for mobile */
       }
 
-      .scroll-text div {
-        justify-content: center;
+      .mobile-scroll .scroll-text div {
+        justify-content: center; /* Center text on mobile */
+        height: 48px; /* Ensure consistent item height */
       }
+
+      /* Define a new keyframe for mobile if needed for different scroll behavior */
+      @keyframes scrollUpMobile {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); /* Adjust based on total items */ }
+      }
+
 
       .hamburger-menu {
         display: flex;
