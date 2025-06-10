@@ -4,11 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Creative365</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap"
+    rel="stylesheet"
+  />
   <style>
+    /* Reset */
     * {
       box-sizing: border-box;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
     }
     body {
       font-family: 'Nunito Sans', sans-serif;
@@ -17,6 +22,8 @@
       line-height: 1.6;
       font-size: 1.15rem;
       text-align: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
     }
     header {
       background-color: #000;
@@ -26,12 +33,12 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      border-radius: 12px;
     }
     .logo img {
       height: 30px;
-    }
-    nav.desktop-nav {
-      display: block;
     }
     nav.desktop-nav a {
       color: #fff;
@@ -39,93 +46,58 @@
       margin-left: 2rem;
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
-    .hamburger-menu {
-      display: none;
-      width: 30px;
-      height: 21px;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 20;
-    }
-    .hamburger-menu .bar {
-      height: 3px;
-      background-color: #fff;
-      width: 100%;
-    }
-    nav.mobile-nav {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      z-index: 15;
-      text-align: center;
-    }
-    nav.mobile-nav.open {
-      display: block;
-    }
-    nav.mobile-nav a {
-      color: #fff;
-      display: block;
-      padding: 1rem;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    /* Hero section */
+    /* Hero Section Container */
     .hero {
-      max-width: 800px; /* MATCH other panels */
-      margin: 3rem auto;
-      background: white;
-      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      background: #fff;
+      padding: 2rem 3rem;
       border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      overflow: visible;
+      position: relative;
     }
 
-    .scroll-wrapper {
+    /* Scroll Wrapper for Desktop */
+    .scroll-wrapper.desktop {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       color: #000;
       user-select: none;
-      text-align: center;
+      margin-bottom: 1rem;
     }
-
     .desktop-line1 {
       font-size: 2.5rem;
       line-height: 1.2;
-      display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
-
     .desktop-line2-inline {
       display: inline-flex;
-      justify-content: center;
       align-items: center;
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
+      gap: 0.5rem;
       font-size: 2.5rem;
       line-height: 1.2;
-      gap: 0.5rem;
       white-space: nowrap;
-      text-align: center;
+      vertical-align: middle;
     }
 
-    .scroll-container-inline {
+    /* Scroll container */
+    .scroll-container {
       position: relative;
-      overflow: hidden;
       height: 48px;
-      flex-grow: 1;
-      /* Removed min-width to allow expansion */
-      /* min-width: 200px; */
-      max-width: 100%;
-      width: auto;
+      width: 240px;
+      overflow: hidden;
     }
 
+    /* Scrolling text animation */
     .scroll-text {
       position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       animation: scrollUp 6s linear infinite;
       display: flex;
       flex-direction: column;
@@ -135,25 +107,25 @@
       line-height: 48px;
       color: #000;
     }
-
     .scroll-text div {
       height: 48px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
     @keyframes scrollUp {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100%); }
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-50%);
+      }
     }
 
-    .mobile-line1, .mobile-line2, .mobile-scroll {
-      display: none;
-    }
-
+    /* Hero Button with slide-in from left */
     .hero-button {
-      background-color: #78C976;
+      background-color: #78c976;
       color: #fff;
       border: none;
       padding: 1rem 2rem;
@@ -163,113 +135,158 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideIn 0.6s forwards 0.5s;
+      box-shadow: 0 5px 10px rgba(120, 201, 118, 0.5);
       transition: background-color 0.3s ease;
     }
     .hero-button:hover {
       background-color: #5fae60;
     }
 
-    .panel, .cta {
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Profile photo and content panels */
+    .panel,
+    .cta {
       max-width: 800px;
       margin: 3rem auto;
       background: #fff;
       padding: 2rem;
-      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       border-radius: 12px;
       text-align: center;
     }
-
     .profile-photo {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: inline-block;
     }
-
     ul {
       list-style: none;
-      padding: 0;
+      padding-left: 0;
+      margin-top: 1rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    ul li::before {
+      content: '✔️';
+      margin-right: 8px;
+      color: #78c976;
     }
 
-    li::before {
-      content: '✔️ ';
-      margin-right: 5px;
-    }
-
+    /* Mobile adjustments */
     @media (max-width: 767px) {
-      .desktop-line1, .desktop-line2-inline {
+      body {
+        padding: 1rem;
+      }
+      header {
+        max-width: 100%;
+        padding: 1rem;
+        border-radius: 0;
+      }
+      nav.desktop-nav {
         display: none;
       }
+      .hero {
+        max-width: 340px;
+        margin: 0 auto 2rem auto;
+        padding: 2rem 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
 
-      .mobile-line1, .mobile-line2, .mobile-scroll {
+      /* Hide desktop scroll wrapper */
+      .scroll-wrapper.desktop {
+        display: none;
+      }
+      /* Show mobile scroll wrapper */
+      .scroll-wrapper.mobile {
         display: block;
         font-family: 'Oswald', sans-serif;
         font-weight: 700;
         color: #000;
-        text-align: center;
         user-select: none;
+        margin-bottom: 1rem;
       }
-      .mobile-line1 {
-        font-size: 2.5rem;
-        line-height: 1.2;
-        margin-bottom: 0.25rem;
-      }
+      .mobile-line1,
       .mobile-line2 {
         font-size: 2.5rem;
         line-height: 1.2;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
       }
-      .mobile-scroll {
-        position: relative;
-        overflow: hidden;
+      .scroll-container.mobile-scroll {
         height: 48px;
-        max-width: 320px; /* centered and constrained width */
+        width: 320px;
+        max-width: 100%;
         margin: 0 auto;
+        overflow: hidden;
+        position: relative;
       }
-      .scroll-text div {
+      .scroll-text.mobile-scroll-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        animation: scrollUp 6s linear infinite;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        line-height: 48px;
+        color: #000;
+      }
+      .scroll-text.mobile-scroll-text div {
+        height: 48px;
+        display: flex;
         justify-content: center;
+        align-items: center;
       }
-
-      /* Make panel and cta narrower on mobile with floating effect */
-      .panel, .cta {
+      .panel,
+      .cta {
         max-width: 340px;
-        margin: 2rem auto;
-        background: #fff;
+        margin: 3rem auto;
         padding: 2rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         border-radius: 12px;
-        text-align: center;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="#" class="logo">
-      <img src="https://github.com/mmp03patane/creative/blob/main/Creative%20logo.JPG?raw=true" alt="Creative365 Logo" />
-    </a>
-    <div class="hamburger-menu" onclick="toggleMobileMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <nav class="desktop-nav">
-      <a href="#">Contact</a>
-    </nav>
-    <nav class="mobile-nav" id="mobileNav">
+    <a href="#" class="logo"
+      ><img
+        src="https://github.com/mmp03patane/creative/blob/main/Creative%20logo.JPG?raw=true"
+        alt="Creative365 Logo"
+    /></a>
+    <nav class="desktop-nav" aria-label="Primary Navigation">
       <a href="#">Contact</a>
     </nav>
   </header>
 
   <section class="hero" role="banner" aria-label="Marketing message">
-    <div class="scroll-wrapper desktop-hero">
+    <!-- Desktop scroll wrapper -->
+    <div class="scroll-wrapper desktop" aria-hidden="true">
       <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
-      <div class="desktop-line2-inline">
+      <div class="desktop-line2-inline" aria-label="Scrolling marketing text">
         <span>WITH</span>
-        <div class="scroll-container-inline">
-          <div class="scroll-text">
+        <div class="scroll-container" aria-hidden="true">
+          <div class="scroll-text" aria-hidden="true">
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
@@ -283,11 +300,12 @@
       </div>
     </div>
 
-    <div class="scroll-wrapper mobile-hero">
+    <!-- Mobile scroll wrapper -->
+    <div class="scroll-wrapper mobile" aria-hidden="true" style="display:none;">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
-      <div class="mobile-scroll">
-        <div class="scroll-text">
+      <div class="scroll-container mobile-scroll" aria-hidden="true">
+        <div class="scroll-text mobile-scroll-text" aria-hidden="true">
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
@@ -300,16 +318,24 @@
       </div>
     </div>
 
-    <button class="hero-button">LET'S CHAT</button>
+    <button class="hero-button" aria-label="Let's chat">LET'S CHAT</button>
   </section>
 
-  <section class="panel">
-    <img src="https://github.com/mmp03patane/creative/blob/main/PROFILE%20PHOTO%203.PNG?raw=true" alt="Your Photo" class="profile-photo" />
+  <section class="panel" aria-label="Mission statement">
+    <img
+      src="https://github.com/mmp03patane/creative/blob/main/PROFILE%20PHOTO%203.PNG?raw=true"
+      alt="Michael Patane"
+      class="profile-photo"
+    />
     <h2>Our Mission</h2>
-    <p>We’re on a mission to simplify success for creatives and small businesses alike — with smart systems, done-for-you services, and coaching that actually delivers.</p>
+    <p>
+      We’re on a mission to simplify success for creatives and small businesses
+      alike — with smart systems, done-for-you services, and coaching that
+      actually delivers.
+    </p>
   </section>
 
-  <section class="cta">
+  <section class="cta" aria-label="What you get">
     <h2>What You Get</h2>
     <p>When you join Creative365, you gain instant access to:</p>
     <ul>
@@ -317,13 +343,24 @@
       <li>Monthly content & updates</li>
       <li>Group coaching and templates</li>
     </ul>
-    <button>GET STARTED</button>
+    <button aria-label="Get started">GET STARTED</button>
   </section>
 
   <script>
-    function toggleMobileMenu() {
-      document.getElementById("mobileNav").classList.toggle("open");
+    // JavaScript to swap desktop/mobile scroll wrappers based on viewport width
+    function toggleScrollWrappers() {
+      const mobileWrapper = document.querySelector('.scroll-wrapper.mobile');
+      const desktopWrapper = document.querySelector('.scroll-wrapper.desktop');
+      if (window.innerWidth <= 767) {
+        mobileWrapper.style.display = 'block';
+        desktopWrapper.style.display = 'none';
+      } else {
+        mobileWrapper.style.display = 'none';
+        desktopWrapper.style.display = 'block';
+      }
     }
+    window.addEventListener('resize', toggleScrollWrappers);
+    window.addEventListener('load', toggleScrollWrappers);
   </script>
 </body>
 </html>
