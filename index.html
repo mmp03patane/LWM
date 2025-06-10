@@ -97,21 +97,20 @@
       font-size: 2.5rem;
       line-height: 1.2;
       display: block;
+      margin-bottom: 0.5rem;
     }
 
     .desktop-line2-inline {
-      display: flex;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-size: 2.5rem;
       line-height: 1.2;
-      flex-wrap: nowrap;
       gap: 0.5rem;
       white-space: nowrap;
-      width: 100%;
-      max-width: 100%;
+      text-align: center;
     }
 
     .scroll-container-inline {
@@ -121,7 +120,6 @@
       flex-grow: 1;
       min-width: 200px;
       max-width: 100%;
-      text-align: left;
     }
 
     .scroll-text {
@@ -135,11 +133,12 @@
       line-height: 48px;
       color: #000;
     }
+
     .scroll-text div {
       height: 48px;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     @keyframes scrollUp {
