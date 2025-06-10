@@ -4,12 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Creative365</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
   <style>
-    /* Reset */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,8 +18,6 @@
       line-height: 1.6;
       font-size: 1.15rem;
       text-align: center;
-      min-height: 100vh;
-      padding: 2rem 1rem;
     }
     header {
       background-color: #000;
@@ -33,12 +27,12 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      max-width: 800px;
-      margin: 0 auto 3rem auto;
-      border-radius: 12px;
     }
     .logo img {
       height: 30px;
+    }
+    nav.desktop-nav {
+      display: block;
     }
     nav.desktop-nav a {
       color: #fff;
@@ -46,58 +40,89 @@
       margin-left: 2rem;
       font-family: 'Roboto', sans-serif;
       text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.05em;
     }
-    /* Hero Section Container */
-    .hero {
-      max-width: 800px;
-      margin: 0 auto 3rem auto;
-      background: #fff;
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      overflow: visible;
-      position: relative;
+    .hamburger-menu {
+      display: none;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 20;
+    }
+    .hamburger-menu .bar {
+      height: 3px;
+      background-color: #fff;
+      width: 100%;
+    }
+    nav.mobile-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      z-index: 15;
+      text-align: center;
+    }
+    nav.mobile-nav.open {
+      display: block;
+    }
+    nav.mobile-nav a {
+      color: #fff;
+      display: block;
+      padding: 1rem;
+      text-transform: uppercase;
+      font-family: 'Roboto', sans-serif;
     }
 
-    /* Scroll Wrapper for Desktop */
-    .scroll-wrapper.desktop {
+    .hero {
+      max-width: 800px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
       color: #000;
       user-select: none;
-      margin-bottom: 1rem;
+      text-align: center;
     }
+
     .desktop-line1 {
       font-size: 2.5rem;
       line-height: 1.2;
-      margin-bottom: 0.25rem;
+      display: block;
     }
-    .desktop-line2-inline {
-      display: inline-flex;
+
+    .desktop-line2 {
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 0.5rem;
       font-size: 2.5rem;
       line-height: 1.2;
       white-space: nowrap;
-      vertical-align: middle;
+      margin-top: 0.5rem;
+    }
+    .desktop-line2 span:first-child {
+      flex-shrink: 0;
     }
 
-    /* Scroll container */
     .scroll-container {
       position: relative;
+      overflow: hidden;
       height: 48px;
       width: 240px;
-      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
     }
-
-    /* Scrolling text animation */
     .scroll-text {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
       animation: scrollUp 6s linear infinite;
       display: flex;
       flex-direction: column;
@@ -110,22 +135,21 @@
     .scroll-text div {
       height: 48px;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: flex-start;
     }
 
     @keyframes scrollUp {
-      0% {
-        transform: translateY(0);
-      }
-      100% {
-        transform: translateY(-50%);
-      }
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-100%); }
     }
 
-    /* Hero Button with slide-in from left */
+    .mobile-line1, .mobile-line2, .mobile-scroll {
+      display: none;
+    }
+
     .hero-button {
-      background-color: #78c976;
+      background-color: #78C976;
       color: #fff;
       border: none;
       padding: 1rem 2rem;
@@ -135,158 +159,130 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      opacity: 0;
-      transform: translateX(-50px);
-      animation: slideIn 0.6s forwards 0.5s;
-      box-shadow: 0 5px 10px rgba(120, 201, 118, 0.5);
       transition: background-color 0.3s ease;
     }
     .hero-button:hover {
       background-color: #5fae60;
     }
 
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    /* Profile photo and content panels */
-    .panel,
-    .cta {
+    .panel, .cta {
       max-width: 800px;
       margin: 3rem auto;
       background: #fff;
       padding: 2rem;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
       border-radius: 12px;
       text-align: center;
     }
+
     .profile-photo {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
     ul {
       list-style: none;
-      padding-left: 0;
-      margin-top: 1rem;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-    ul li::before {
-      content: '✔️';
-      margin-right: 8px;
-      color: #78c976;
+      padding: 0;
     }
 
-    /* Mobile adjustments */
+    li::before {
+      content: '✔️ ';
+      margin-right: 5px;
+    }
+
     @media (max-width: 767px) {
-      body {
-        padding: 1rem;
-      }
-      header {
-        max-width: 100%;
-        padding: 1rem;
-        border-radius: 0;
-      }
-      nav.desktop-nav {
-        display: none;
-      }
-      .hero {
-        max-width: 340px;
-        margin: 0 auto 2rem auto;
-        padding: 2rem 1.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      .hero,
+      .panel,
+      .cta {
+        width: 90%;
+        margin: 2rem auto;
+        padding: 1.5rem;
       }
 
-      /* Hide desktop scroll wrapper */
-      .scroll-wrapper.desktop {
+      .desktop-line1, .desktop-line2 {
         display: none;
       }
-      /* Show mobile scroll wrapper */
-      .scroll-wrapper.mobile {
+
+      .mobile-line1, .mobile-line2, .mobile-scroll {
         display: block;
         font-family: 'Oswald', sans-serif;
         font-weight: 700;
         color: #000;
+        text-align: center;
         user-select: none;
-        margin-bottom: 1rem;
       }
-      .mobile-line1,
-      .mobile-line2 {
-        font-size: 2.5rem;
+      .mobile-line1 {
+        font-size: 2.2rem;
         line-height: 1.2;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.25rem;
       }
-      .scroll-container.mobile-scroll {
-        height: 48px;
-        width: 320px;
-        max-width: 100%;
-        margin: 0 auto;
-        overflow: hidden;
+      .mobile-line2 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-scroll {
         position: relative;
-      }
-      .scroll-text.mobile-scroll-text {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        animation: scrollUp 6s linear infinite;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        font-size: 2.5rem;
-        line-height: 48px;
-        color: #000;
-      }
-      .scroll-text.mobile-scroll-text div {
+        overflow: hidden;
         height: 48px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
+        margin: 0 auto;
       }
-      .panel,
-      .cta {
-        max-width: 340px;
-        margin: 3rem auto;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        border-radius: 12px;
+
+      .scroll-container {
+        width: 100% !important;
+      }
+
+      .scroll-text {
+        width: 100%;
+        text-align: center;
+        font-size: 2.2rem;
+      }
+
+      .scroll-text div {
+        justify-content: center;
+      }
+
+      .hamburger-menu {
+        display: flex;
+      }
+
+      nav.desktop-nav {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="#" class="logo"
-      ><img
-        src="https://github.com/mmp03patane/creative/blob/main/Creative%20logo.JPG?raw=true"
-        alt="Creative365 Logo"
-    /></a>
-    <nav class="desktop-nav" aria-label="Primary Navigation">
+    <a href="#" class="logo">
+      <img src="https://github.com/mmp03patane/creative/blob/main/Creative%20logo.JPG?raw=true" alt="Creative365 Logo" />
+    </a>
+    <div class="hamburger-menu" onclick="toggleMobileMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="desktop-nav">
+      <a href="#">Contact</a>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav">
       <a href="#">Contact</a>
     </nav>
   </header>
 
-  <section class="hero" role="banner" aria-label="Marketing message">
-    <!-- Desktop scroll wrapper -->
-    <div class="scroll-wrapper desktop" aria-hidden="true">
+  <section class="hero">
+    <div class="scroll-wrapper desktop-hero">
       <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
-      <div class="desktop-line2-inline" aria-label="Scrolling marketing text">
+      <div class="desktop-line2">
         <span>WITH</span>
-        <div class="scroll-container" aria-hidden="true">
-          <div class="scroll-text" aria-hidden="true">
+        <div class="scroll-container">
+          <div class="scroll-text">
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
@@ -300,12 +296,11 @@
       </div>
     </div>
 
-    <!-- Mobile scroll wrapper -->
-    <div class="scroll-wrapper mobile" aria-hidden="true" style="display:none;">
+    <div class="scroll-wrapper mobile-hero">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
-      <div class="scroll-container mobile-scroll" aria-hidden="true">
-        <div class="scroll-text mobile-scroll-text" aria-hidden="true">
+      <div class="mobile-scroll">
+        <div class="scroll-text">
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
@@ -318,24 +313,16 @@
       </div>
     </div>
 
-    <button class="hero-button" aria-label="Let's chat">LET'S CHAT</button>
+    <button class="hero-button">LET'S CHAT</button>
   </section>
 
-  <section class="panel" aria-label="Mission statement">
-    <img
-      src="https://github.com/mmp03patane/creative/blob/main/PROFILE%20PHOTO%203.PNG?raw=true"
-      alt="Michael Patane"
-      class="profile-photo"
-    />
+  <section class="panel">
+    <img src="https://github.com/mmp03patane/creative/blob/main/PROFILE%20PHOTO%203.PNG?raw=true" alt="Your Photo" class="profile-photo" />
     <h2>Our Mission</h2>
-    <p>
-      We’re on a mission to simplify success for creatives and small businesses
-      alike — with smart systems, done-for-you services, and coaching that
-      actually delivers.
-    </p>
+    <p>We’re on a mission to simplify success for creatives and small businesses alike — with smart systems, done-for-you services, and coaching that actually delivers.</p>
   </section>
 
-  <section class="cta" aria-label="What you get">
+  <section class="cta">
     <h2>What You Get</h2>
     <p>When you join Creative365, you gain instant access to:</p>
     <ul>
@@ -343,24 +330,13 @@
       <li>Monthly content & updates</li>
       <li>Group coaching and templates</li>
     </ul>
-    <button aria-label="Get started">GET STARTED</button>
+    <button>GET STARTED</button>
   </section>
 
   <script>
-    // JavaScript to swap desktop/mobile scroll wrappers based on viewport width
-    function toggleScrollWrappers() {
-      const mobileWrapper = document.querySelector('.scroll-wrapper.mobile');
-      const desktopWrapper = document.querySelector('.scroll-wrapper.desktop');
-      if (window.innerWidth <= 767) {
-        mobileWrapper.style.display = 'block';
-        desktopWrapper.style.display = 'none';
-      } else {
-        mobileWrapper.style.display = 'none';
-        desktopWrapper.style.display = 'block';
-      }
+    function toggleMobileMenu() {
+      document.getElementById("mobileNav").classList.toggle("open");
     }
-    window.addEventListener('resize', toggleScrollWrappers);
-    window.addEventListener('load', toggleScrollWrappers);
   </script>
 </body>
 </html>
