@@ -75,14 +75,15 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Hero section */
+    /* Hero section - FIXED WIDTH */
     .hero {
-      max-width: 700px;
+      max-width: 800px; /* changed from 700px */
       margin: 3rem auto;
       background: white;
       padding: 2rem;
       border-radius: 12px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
     .scroll-wrapper {
@@ -201,12 +202,10 @@
 
     /* Responsive for mobile */
     @media (max-width: 767px) {
-      /* Hide desktop version */
       .desktop-line1, .desktop-line2 {
         display: none;
       }
 
-      /* Show mobile lines */
       .mobile-line1, .mobile-line2, .mobile-scroll {
         display: block;
         font-family: 'Oswald', sans-serif;
@@ -215,6 +214,7 @@
         text-align: center;
         user-select: none;
       }
+
       .mobile-line1 {
         font-size: 2.5rem;
         line-height: 1.2;
@@ -248,7 +248,7 @@
         height: 48px;
         display: flex;
         align-items: center;
-        justify-content: center; /* center on mobile */
+        justify-content: center;
       }
     }
   </style>
@@ -283,7 +283,6 @@
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
             <div>A NEW WEBSITE</div>
-            <!-- repeat for smooth scroll -->
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
@@ -303,7 +302,6 @@
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
           <div>A NEW WEBSITE</div>
-          <!-- repeat for smooth scroll -->
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
