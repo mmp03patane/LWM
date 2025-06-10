@@ -8,7 +8,8 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
     }
     body {
       font-family: 'Nunito Sans', sans-serif;
@@ -75,7 +76,6 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Match panel/cta sizing */
     .hero {
       max-width: 800px;
       margin: 3rem auto;
@@ -195,6 +195,14 @@
     }
 
     @media (max-width: 767px) {
+      .hero,
+      .panel,
+      .cta {
+        width: 90%;
+        margin: 2rem auto;
+        padding: 1.5rem;
+      }
+
       .desktop-line1, .desktop-line2 {
         display: none;
       }
@@ -208,12 +216,12 @@
         user-select: none;
       }
       .mobile-line1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         line-height: 1.2;
         margin-bottom: 0.25rem;
       }
       .mobile-line2 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         line-height: 1.2;
         margin-bottom: 0.5rem;
       }
@@ -222,25 +230,30 @@
         position: relative;
         overflow: hidden;
         height: 48px;
-        width: 240px;
+        width: 100%;
         margin: 0 auto;
       }
-      .scroll-text {
-        position: absolute !important;
-        animation: scrollUp 6s linear infinite;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        font-size: 2.5rem;
-        line-height: 48px;
-        color: #000;
+
+      .scroll-container {
+        width: 100% !important;
       }
+
+      .scroll-text {
+        width: 100%;
+        text-align: center;
+        font-size: 2.2rem;
+      }
+
       .scroll-text div {
-        height: 48px;
-        display: flex;
-        align-items: center;
         justify-content: center;
+      }
+
+      .hamburger-menu {
+        display: flex;
+      }
+
+      nav.desktop-nav {
+        display: none;
       }
     }
   </style>
@@ -263,13 +276,13 @@
     </nav>
   </header>
 
-  <section class="hero" role="banner" aria-label="Marketing message">
+  <section class="hero">
     <div class="scroll-wrapper desktop-hero">
       <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
-      <div class="desktop-line2" aria-label="Business growth tools">
+      <div class="desktop-line2">
         <span>WITH</span>
-        <div class="scroll-container" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
-          <div class="scroll-text" aria-hidden="true">
+        <div class="scroll-container">
+          <div class="scroll-text">
             <div>FACEBOOK ADS</div>
             <div>INSTAGRAM ADS</div>
             <div>GOOGLE ADS</div>
@@ -283,11 +296,11 @@
       </div>
     </div>
 
-    <div class="scroll-wrapper mobile-hero" aria-live="polite" aria-atomic="true" aria-relevant="additions text">
+    <div class="scroll-wrapper mobile-hero">
       <span class="mobile-line1">LET'S GROW YOUR</span>
       <span class="mobile-line2">BUSINESS WITH</span>
       <div class="mobile-scroll">
-        <div class="scroll-text" aria-hidden="true">
+        <div class="scroll-text">
           <div>FACEBOOK ADS</div>
           <div>INSTAGRAM ADS</div>
           <div>GOOGLE ADS</div>
