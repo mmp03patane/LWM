@@ -85,17 +85,24 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    /* Hero Section Styles (Panel removed) */
+    /* Hero Section Styles */
     .hero {
-      max-width: 800px;
-      margin: 3rem auto; /* Keep margin for spacing */
-      /* Removed: background, padding, border-radius, box-shadow */
+      width: 100%; /* Full width for the background */
+      padding: 3rem 0; /* Add top/bottom padding to hero section */
+      background: #383838; /* Dark background color */
+      color: #fff; /* White text color for hero section */
+    }
+
+    /* Inner container for hero content to constrain width */
+    .hero-inner {
+        max-width: 800px;
+        margin: 0 auto; /* Center the content */
+        padding: 0 1rem; /* Add some horizontal padding for smaller screens */
     }
 
     .scroll-wrapper {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      color: #000;
       user-select: none;
       text-align: center;
     }
@@ -113,51 +120,18 @@
       gap: 0.5rem;
       font-size: 2.5rem;
       line-height: 1.2;
-      white-space: nowrap; /* Keeps "WITH" and scrolling text on one line */
+      white-space: nowrap; /* Keeps "WITH" and static text on one line */
       margin-top: 0.5rem;
     }
     .desktop-line2 span:first-child {
       flex-shrink: 0; /* Prevents "WITH" from shrinking */
     }
 
-    /* --- DESKTOP SCROLLING TEXT FIXES --- */
-    .scroll-container {
-      position: relative;
-      overflow: hidden;
-      height: 48px; /* Matches the line-height of a single item */
-      width: 290px; /* Specific width for desktop to ensure visibility of longest text */
-      min-width: 290px; /* Prevents shrinking */
-      flex-shrink: 0; /* Ensures it doesn't shrink in a flex container */
-      display: inline-block;
-      vertical-align: middle; /* Align with "WITH" text */
-    }
-    .scroll-text {
-      position: absolute;
-      animation: scrollUp 6s linear infinite; /* Animation applied */
-      display: flex;
-      flex-direction: column; /* Stack text items vertically */
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      font-size: 2.5rem; /* Desktop font size */
-      line-height: 48px; /* Height of each text item */
-      color: #000;
-      width: 100%; /* Ensures the absolute positioned text fills the container's width */
-    }
-    .scroll-text div {
-      height: 48px; /* Each div holds one line of text */
-      display: flex;
-      align-items: center; /* Vertically center text in its div */
-      justify-content: flex-start; /* Align text to the left within its div */
-      white-space: nowrap; /* Prevents text from wrapping within a single item */
-    }
-    @keyframes scrollUp {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-50%); /* Scrolls up by half the total scroll-text height for seamless loop */ }
-    }
-    /* --- END DESKTOP SCROLLING TEXT FIXES --- */
+    /* Removed scrolling text CSS */
+    /* .scroll-container, .scroll-text, @keyframes scrollUp are removed */
 
     /* Hide mobile specific elements by default on desktop */
-    .mobile-line1, .mobile-line2, .mobile-scroll {
+    .mobile-line1, .mobile-line2 {
       display: none;
     }
 
@@ -183,7 +157,6 @@
     .panel, .cta {
       max-width: 800px;
       margin: 3rem auto; /* Adjusted margin to add spacing */
-      /* Removed: background, padding, border-radius, box-shadow */
       text-align: center;
     }
 
@@ -209,12 +182,11 @@
     /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
     @media (max-width: 767px) {
       /* Adjust general section widths and padding for mobile */
-      .hero,
+      .hero-inner, /* Apply to inner container on mobile too */
       .panel,
       .cta {
-        width: 90%;
+        width: 90%; /* Keep content constrained */
         margin: 2rem auto; /* Adjusted margin for mobile */
-        /* Removed: padding (was 1.5rem before) */
       }
 
       /* Hide desktop specific hero text */
@@ -222,12 +194,11 @@
         display: none;
       }
 
-      /* Show mobile specific hero text and scrolling container */
-      .mobile-line1, .mobile-line2, .mobile-scroll {
+      /* Show mobile specific hero text */
+      .mobile-line1, .mobile-line2 {
         display: block;
         font-family: 'Oswald', sans-serif;
         font-weight: 700;
-        color: #000;
         text-align: center;
         user-select: none;
       }
@@ -240,38 +211,6 @@
         font-size: 2.2rem;
         line-height: 1.2;
         margin-bottom: 0.5rem;
-      }
-
-      .mobile-scroll {
-        position: relative;
-        overflow: hidden;
-        height: 48px; /* Keep consistent height */
-        width: 100%; /* Make mobile scroll take full width */
-        margin: 0 auto;
-      }
-
-      /* Hide the desktop scroll-container explicitly on mobile */
-      .scroll-container {
-        display: none;
-      }
-
-      /* Mobile specific scroll-text styling */
-      .mobile-scroll .scroll-text {
-        width: 100%; /* Ensure text fills mobile container */
-        text-align: center; /* Center text on mobile */
-        font-size: 2.2rem; /* Mobile font size */
-        animation: scrollUpMobile 6s linear infinite; /* Separate animation keyframe for mobile */
-      }
-
-      .mobile-scroll .scroll-text div {
-        justify-content: center; /* Center each individual text item on mobile */
-        height: 48px; /* Ensure consistent item height */
-      }
-
-      /* Mobile specific keyframe for vertical scrolling */
-      @keyframes scrollUpMobile {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(-50%); } /* Same logic as desktop for seamless loop */
       }
 
       /* Show hamburger menu and hide desktop nav on mobile */
@@ -303,43 +242,22 @@
   </header>
 
   <section class="hero">
-    <div class="scroll-wrapper desktop-hero">
-      <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
-      <div class="desktop-line2">
-        <span>WITH</span>
-        <div class="scroll-container">
-          <div class="scroll-text">
-            <div>FACEBOOK ADS</div>
-            <div>INSTAGRAM ADS</div>
-            <div>GOOGLE ADS</div>
-            <div>A NEW WEBSITE</div>
-            <div>FACEBOOK ADS</div>
-            <div>INSTAGRAM ADS</div>
-            <div>GOOGLE ADS</div>
-            <div>A NEW WEBSITE</div>
-          </div>
+    <div class="hero-inner">
+      <div class="scroll-wrapper desktop-hero">
+        <span class="desktop-line1">LET'S GROW YOUR BUSINESS</span>
+        <div class="desktop-line2">
+          <span>WITH</span>
+          <span>DIGITAL MARKETING</span> <!-- Replaced scrolling text with static text -->
         </div>
       </div>
-    </div>
 
-    <div class="scroll-wrapper mobile-hero">
-      <span class="mobile-line1">LET'S GROW YOUR</span>
-      <span class="mobile-line2">BUSINESS WITH</span>
-      <div class="mobile-scroll">
-        <div class="scroll-text">
-          <div>FACEBOOK ADS</div>
-          <div>INSTAGRAM ADS</div>
-          <div>GOOGLE ADS</div>
-          <div>A NEW WEBSITE</div>
-          <div>FACEBOOK ADS</div>
-          <div>INSTAGRAM ADS</div>
-          <div>GOOGLE ADS</div>
-          <div>A NEW WEBSITE</div>
-        </div>
+      <div class="scroll-wrapper mobile-hero">
+        <span class="mobile-line1">LET'S GROW YOUR</span>
+        <span class="mobile-line2">BUSINESS WITH DIGITAL MARKETING</span> <!-- Replaced scrolling text with static text -->
       </div>
-    </div>
 
-    <button class="hero-button">LET'S CHAT</button>
+      <button class="hero-button">LET'S CHAT</button>
+    </div>
   </section>
 
   <section class="panel">
