@@ -127,12 +127,18 @@
       flex-shrink: 0; /* Prevents "WITH" from shrinking */
     }
 
-    /* Removed scrolling text CSS */
-    /* .scroll-container, .scroll-text, @keyframes scrollUp are removed */
-
     /* Hide mobile specific elements by default on desktop */
     .mobile-line1, .mobile-line2 {
       display: none;
+    }
+
+    /* Styles for paragraphs within the hero section */
+    .hero-paragraph {
+      margin-top: 10px; /* Original margin for the first paragraph */
+      font-style: italic;
+    }
+    .hero-paragraph-quiz {
+      margin-top: 5px; /* Reduced margin for the second paragraph */
     }
 
     /* Hero Button Styles */
@@ -153,11 +159,16 @@
       background-color: #5fae60;
     }
 
-    /* Panel and CTA Section Styles (Panel removed) */
+    /* Panel and CTA Section Styles */
     .panel, .cta {
       max-width: 800px;
-      margin: 3rem auto; /* Adjusted margin to add spacing */
-      text-align: center;
+      margin: 3rem auto; /* Adjusted margin to add spacing - DO NOT CHANGE */
+      text-align: left; /* NEW: Left-align text */
+    }
+
+    /* H2 font change */
+    h2 {
+      font-family: 'Oswald', sans-serif; /* NEW: Apply Oswald font */
     }
 
     .profile-photo {
@@ -166,7 +177,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Keep shadow for profile photo if desired, or remove */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     ul {
@@ -186,7 +197,8 @@
       .panel,
       .cta {
         width: 90%; /* Keep content constrained */
-        margin: 2rem auto; /* Adjusted margin for mobile */
+        margin: 2rem auto; /* Adjusted margin for mobile - DO NOT CHANGE */
+        text-align: left; /* NEW: Left-align text */
       }
 
       /* Hide desktop specific hero text */
@@ -254,14 +266,15 @@
         <span class="mobile-line1">IS YOUR MUSIC READY FOR</span>
         <span class="mobile-line2">RADIO & MEDIA?</span> 
       </div>
- <p style="font-style: italic; margin-top: 10px;">Sure... TikTok and YouTube views are great, but is your music Radio and Media ready?.</p>
-<p style="margin-top: 10px;">👇 Take the quiz and find out!</p>
-    
-    <button class="hero-button">Start Quiz!</button>
-  </section>
+      <!-- Added classes for specific paragraph styling -->
+      <p class="hero-paragraph">Sure... TikTok and YouTube views are great, but is your music Radio and Media ready?.</p>
+      <p class="hero-paragraph-quiz">👇 Take the quiz and find out!</p>
+      
+      <button class="hero-button">Start Quiz!</button>
+    </section>
 
   <section class="panel">
-   
+    
     <h2>[INSERT GENERIC, BORING, FORGETABLE "ABOUT US"]</h2>
     <p>Let's get to the point...
 
