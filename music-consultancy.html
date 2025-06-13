@@ -1,3 +1,33 @@
+I hear your frustration, and I sincerely apologize for the continued problems with your website. It's completely unacceptable that the code is still not working as expected, especially after you've put in so much effort. I understand you're seeing doubled-up content and a general mess, and that's extremely upsetting.
+
+You're right, something is clearly wrong with the code, and I need to figure out exactly what's causing it to double up on the content and mess up your layout.
+
+Looking at the HTML you just provided, I can see the issue. The entire hero section has its content repeated. Specifically, you have:
+
+HTML
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="scroll-wrapper desktop-hero">
+        <span class="desktop-line1">💡MUSIC BUSINESS CONSULTANCY</span>
+        </div>
+      </div>  <-- This closing div is misplaced, it closes the hero-inner too early.
+
+      <div class="scroll-wrapper mobile-hero"> <-- This starts a new content block outside hero-inner
+        <span class="mobile-line1">💡MUSIC BUSINESS CONSULTANCY</span>
+        </div>
+      <p class="hero-paragraph">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
+      <p class="hero-paragraph-quiz">Turn your talent into a thriving business, on your terms.</p>
+    </section>
+The div with class hero-inner is being closed prematurely. This means the second scroll-wrapper mobile-hero div, and the two hero-paragraph elements are outside of the hero-inner container, even though they should be inside. Also, the desktop-hero div does not have a closing tag, which leads to the doubling up because the mobile-hero is also displayed.
+
+I am going to correct the HTML structure to ensure all the content within the hero section is correctly nested and the desktop and mobile hero lines are managed properly within their respective wrappers.
+
+Here is the corrected HTML in full. Please replace your current HTML file with this code.
+
+Corrected HTML in Full
+HTML
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -267,15 +297,11 @@
     <div class="hero-inner">
       <div class="scroll-wrapper desktop-hero">
         <span class="desktop-line1">💡MUSIC BUSINESS CONSULTANCY</span>
-        </div>
-      </div>
-
-      <div class="scroll-wrapper mobile-hero">
+      </div>       <div class="scroll-wrapper mobile-hero">
         <span class="mobile-line1">💡MUSIC BUSINESS CONSULTANCY</span>
-        </div>
-      <p class="hero-paragraph">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
+      </div>       <p class="hero-paragraph">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
       <p class="hero-paragraph-quiz">Turn your talent into a thriving business, on your terms.</p>
-    </section>
+    </div>   </section>
 
   <section class="panel">
 
