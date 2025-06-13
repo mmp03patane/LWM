@@ -201,11 +201,8 @@
       .panel,
       .cta,
       .services-section { /* Added .services-section */
-        width: auto; /* Allow width to adjust based on padding */
-        margin-left: 1rem; /* Match the left margin */
-        margin-right: 1rem; /* Match the right margin */
-        margin-top: 2rem; /* Adjusted margin for mobile - DO NOT CHANGE */
-        margin-bottom: 2rem; /* Keep consistent top/bottom margin */
+        width: 90%; /* Keep content constrained */
+        margin: 2rem auto; /* Adjusted margin for mobile - DO NOT CHANGE */
         text-align: left; /* NEW: Left-align text */
       }
  /* Add this H2 rule for mobile only */
@@ -246,13 +243,6 @@
       nav.desktop-nav {
         display: none; /* Hide desktop nav */
       }
-
-      /* Mobile specific styling for hero paragraphs */
-      .hero-paragraph,
-      .hero-paragraph-quiz {
-        margin-left: 1rem;
-        margin-right: 1rem;
-      }
     }
   </style>
 </head>
@@ -283,7 +273,7 @@
 
       <div class="scroll-wrapper mobile-hero">
         <span class="mobile-line1">💡MUSIC BUSINESS CONSULTANCY</span>
-      </div>
+        </div>
       <p class="hero-paragraph">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
       <p class="hero-paragraph-quiz">Turn your talent into a thriving business, on your terms.</p>
     </section>
