@@ -1,343 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Creative365</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
-  <style>
-    /* Universal Box-sizing and Base Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Nunito Sans', sans-serif;
-      background-color: #f7f7f7;
-      color: #222;
-      line-height: 1.6;
-      font-size: 1.25rem;
-      text-align: center;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Music Business Consultancy - Creative365</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+    <style>
+        /* Universal Box-sizing and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #f7f7f7;
+            color: #222;
+            line-height: 1.6;
+            font-size: 1.25rem;
+            text-align: center;
+        }
 
-    /* Header Styles */
-    header {
-      background-color: #000;
-      color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-    .logo img {
-      height: 30px;
-    }
+        /* Header Styles */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .logo img {
+            height: 45px; /* Adjusted logo height for better balance */
+        }
 
-    /* Desktop Navigation */
-    nav.desktop-nav {
-      display: block; /* Default to block for desktop */
-    }
-    nav.desktop-nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-family: 'Roboto', sans-serif;
-      text-transform: uppercase;
-    }
+        /* Desktop Navigation */
+        nav.desktop-nav {
+            display: block; /* Default to block for desktop */
+        }
+        nav.desktop-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
 
-    /* Hamburger Menu (Hidden by default on desktop) */
-    .hamburger-menu {
-      display: none; /* Hidden on desktop */
-      width: 30px;
-      height: 21px;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 20;
-    }
-    .hamburger-menu .bar {
-      height: 3px;
-      background-color: #fff;
-      width: 100%;
-    }
+        /* Hamburger Menu (Hidden by default on desktop) */
+        .hamburger-menu {
+            display: none; /* Hidden on desktop */
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 20;
+        }
+        .hamburger-menu .bar {
+            height: 3px;
+            background-color: #fff;
+            width: 100%;
+        }
 
-    /* Mobile Navigation (Hidden by default, shown with JS) */
-    nav.mobile-nav {
-      display: none; /* Hidden by default */
-      position: absolute;
-      top: 100%; /* Positions it right below the header */
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      z-index: 15;
-      text-align: center;
-    }
-    nav.mobile-nav.open {
-      display: block; /* Toggled by JavaScript */
-    }
-    nav.mobile-nav a {
-      color: #fff;
-      display: block;
-      padding: 1rem;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-    }
+        /* Mobile Navigation (Hidden by default, shown with JS) */
+        nav.mobile-nav {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Positions it right below the header */
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            z-index: 15;
+            text-align: center;
+        }
+        nav.mobile-nav.open {
+            display: block; /* Toggled by JavaScript */
+        }
+        nav.mobile-nav a {
+            color: #fff;
+            display: block;
+            padding: 1rem;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    /* Hero Section Styles */
-    .hero {
-      width: 100%; /* Full width for the background */
-      padding: 3rem 0; /* Add top/bottom padding to hero section */
-      background: #383838; /* Dark background color */
-      color: #fff; /* White text color for hero section */
-    }
+        /* Main Content Section Styles */
+        .main-content-section {
+            max-width: 800px;
+            margin: 4rem auto; /* Consistent margin top/bottom for sections */
+            padding: 0 1rem; /* Consistent horizontal padding */
+            text-align: left;
+            font-size: 1.15rem; /* Slightly smaller base font for content for better readability */
+            color: #333; /* Darker text for main content */
+        }
+        .main-content-section p {
+            margin-bottom: 1rem; /* Add consistent bottom margin to paragraphs */
+            line-height: 1.7; /* Increased line height for better readability */
+        }
 
-    /* Inner container for hero content to constrain width */
-    .hero-inner {
-        max-width: 800px;
-        margin: 0 auto; /* Center the content */
-        padding: 0 1rem; /* Add some horizontal padding for smaller screens */
-    }
+        /* H2 & H3 font change */
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem; /* Adjusted font size for h2 elements */
+            margin-bottom: 2.5rem; /* Added bottom margin for main heading */
+            text-align: center; /* Center main heading */
+            color: #222; /* Consistent dark color */
+        }
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem; /* Adjusted font size for subheadings */
+            margin-top: 2.5rem; /* Space before subheadings */
+            margin-bottom: 1rem; /* Space after subheadings */
+            color: #333;
+        }
+        .main-content-section ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem; /* Indent list items */
+        }
+        .main-content-section ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem; /* Indent list items */
+            position: relative;
+        }
+        .main-content-section ul li::before {
+            content: '✔️ ';
+            margin-right: 5px;
+            position: absolute;
+            left: -0.5rem; /* Adjust icon position */
+            color: #78C976; /* Green checkmark */
+        }
+        .main-content-section strong {
+            display: block; /* Makes the strong tag take full width, pushing text below */
+            margin-bottom: 0.5rem; /* Space between title and description */
+            font-size: 1.25rem; /* Slightly larger font for bolded titles */
+            color: #222;
+        }
+        .intro-quote {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            color: #555;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center; /* Center the button */
+            margin-top: 3rem; /* Space above the button */
+            margin-bottom: 4rem; /* Space below the button */
+        }
+        .final-call-to-action {
+            margin-top: 2rem;
+            margin-bottom: 1rem; /* Adjust as needed */
+            text-align: center;
+        }
 
-    .scroll-wrapper {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      user-select: none;
-      text-align: center;
-    }
 
-    /* Desktop Hero Text Lines */
-    .desktop-line1 {
-      font-size: 3.2rem; /* INCREASED FONT SIZE */
-      line-height: 1.2;
-      display: block;
-    }
-    .desktop-line2 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 3.2rem; /* INCREASED FONT SIZE */
-      line-height: 1.2;
-      white-space: nowrap; /* Keeps "WITH" and static text on one line */
-      margin-top: 0.5rem;
-    }
-    .desktop-line2 span:first-child {
-      flex-shrink: 0; /* Prevents "WITH" from shrinking */
-    }
-
-    /* Hide mobile specific elements by default on desktop */
-    .mobile-line1, .mobile-line2 {
-      display: none;
-    }
-
-    /* Styles for paragraphs within the hero section */
-    .hero-paragraph {
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 1.30rem;
-    }
-    .hero-paragraph-quiz {
-      margin-top: 5px;
-      font-size: 1.30rem;
-    }
-
-    /* Hero Button Styles */
-    .hero-button {
-      background-color: #78C976;
-      color: #fff;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      font-family: 'Roboto', sans-serif;
-      text-transform: uppercase;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      transition: background-color 0.3s ease;
-    }
-    .hero-button:hover {
-      background-color: #5fae60;
-    }
-
-    /* Panel, CTA, and Services Section Styles */
-    .panel, .cta, .services-section { /* Added .services-section */
-      max-width: 800px;
-      margin: 3rem auto;
-      text-align: left;
-      font-size: 1.30rem;
-    }
-
-    /* H2 font change */
-    h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2rem; /* Adjusted font size for h2 elements to be smaller */
-    }
-
-    .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li::before {
-      content: '✔️ ';
-      margin-right: 5px;
-    }
-
-    /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
-    @media (max-width: 767px) {
-      /* Adjust general section widths and padding for mobile */
-      .hero-inner, /* Apply to inner container on mobile too */
-      .panel,
-      .cta,
-      .services-section { /* Added .services-section */
-        width: 90%; /* Keep content constrained */
-        margin: 2rem auto; /* Adjusted margin for mobile - DO NOT CHANGE */
-        text-align: left; /* NEW: Left-align text */
-      }
-      /* Add this H2 rule for mobile only */
-      h2 {
-        font-size: 1.7rem; /* Adjust this value to your desired smaller size for mobile */
-      }
-      /* Hide desktop specific hero text */
-      .desktop-line1, .desktop-line2 {
-        display: none;
-      }
-
-      /* Show mobile specific hero text */
-      .mobile-line1 {
-        display: block;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        text-align: center;
-        user-select: none;
-        font-size: 2.7rem; /* INCREASED FONT SIZE */
-        line-height: 1.2;
-        margin-bottom: 0.25rem;
-      }
-      .mobile-line2 {
-        display: block;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        text-align: center;
-        font-size: 2.7rem; /* INCREASED FONT SIZE */
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
-      }
-
-      /* Show hamburger menu and hide desktop nav on mobile */
-      .hamburger-menu {
-        display: flex; /* Show hamburger */
-      }
-      nav.desktop-nav {
-        display: none; /* Hide desktop nav */
-      }
-    }
-  </style> </head>
+        /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
+        @media (max-width: 767px) {
+            .main-content-section {
+                width: 90%;
+                margin: 3rem auto;
+                padding: 0;
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 0.8rem;
+            }
+            .main-content-section p {
+                margin-bottom: 0.8rem;
+                line-height: 1.6;
+            }
+            .main-content-section strong {
+                font-size: 1.15rem;
+            }
+            .main-content-section ul {
+                padding-left: 0.5rem;
+            }
+            .main-content-section ul li {
+                padding-left: 1rem;
+            }
+            .main-content-section ul li::before {
+                left: 0;
+            }
+            .intro-quote {
+                font-size: 1.8rem;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .button-container {
+                margin-top: 2rem;
+                margin-bottom: 3rem;
+            }
+        }
+    </style>
+</head>
 <body>
-  <header>
-    <a href="index.html" class="logo">
-      <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo.jpg?raw=true" />
-    </a>
-    <div class="hamburger-menu" onclick="toggleMobileMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <nav class="desktop-nav">
-      <a href="#">Contact</a>
-    </nav>
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Creative365 Logo" />
+        </a>
+        <div class="hamburger-menu" onclick="toggleMobileMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="radiopitching.html">Radio Pitching</a>
+            <a href="prmedia.html">PR & Media Outreach</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html" onclick="toggleMobileMenu()">Home</a>
+            <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
+            <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
+            <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="scroll-wrapper desktop-hero">
-        <span class="desktop-line1">💡MUSIC BUSINESS CONSULTANCY</span>
-      </div> <div class="scroll-wrapper mobile-hero">
-        <span class="mobile-line1">💡MUSIC BUSINESS CONSULTANCY</span>
-      </div> <p class="hero-paragraph">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
-      <p class="hero-paragraph-quiz">Turn your talent into a thriving business, on your terms.</p>
-    </div> </section>
+    <section class="main-content-section">
+        <h2>💡 MUSIC BUSINESS CONSULTANCY</h2>
+        <p class="intro-quote">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
+        <p>
+            Turn your talent into a thriving business, on <strong>your terms.</strong>
+        </p>
+        <p>
+            Monthly 1:1 coaching tailored to you; your music, your goals.
+        </p>
+        <p>
+            This isn’t a one-size-fits-all formula... It’s <strong>personal</strong>, <strong>strategic</strong>, and built around <strong>your vision.</strong>
+        </p>
+        <p>
+            Whether you're planning a release, struggling with visibility, stuck in burnout, or need to make sense of monetisation — we’re here to guide you through every business decision with clarity and confidence.
+        </p>
+        <p>
+            We're not a label or manager. Think of us as your behind-the-scenes advisor, strategist, and partner in progress.
+        </p>
 
-  <section class="panel">
+        <h3>WHAT'S INCLUDED?</h3>
+        <ul>
+            <li>
+                <strong>🎯 Personalised Strategy Sessions:</strong><br>
+                Each month, you’ll have a private 1:1 coaching session focused on the current needs of your music career. We’ll work through your priorities — whether that’s building your fanbase, launching a new product, pitching your music, or restructuring your revenue streams.
+            </li>
+            <li>
+                <strong>📈 Revenue & Monetisation Planning:</strong><br>
+                We’ll audit your existing income sources and create a plan to diversify your revenue — from merch and sync licensing to fan subscriptions, coaching, or digital products. Our goal is to help you earn consistently from your creativity.
+            </li>
+            <li>
+                <strong>📣 Digital Marketing & Promotion:</strong><br>
+                Get expert guidance on how to run your socials like a brand, build an engaged audience, and launch campaigns that actually move the needle. We’ll cover content strategy, funnel building, email marketing, and conversion tactics tailored to artists.
+            </li>
+            <li>
+                <strong>🧭 Lead Generation & Audience Building:</strong><br>
+                From fan acquisition to music buyers and industry contacts — we’ll help you identify your ideal audience and create a strategy to reach them. Think: smarter outreach, better engagement, and long-term loyalty.
+            </li>
+            <li>
+                <strong>🧠 Mindset & Burnout Prevention:</strong><br>
+                We’ll help you create boundaries, routines, and mental clarity so you don’t burn out chasing every opportunity. Think of this as a tune-up for your mindset — equipping you with the focus, resilience, and self-belief to make bold moves.
+            </li>
+            <li>
+                <strong>🎤 Gig & Launch Planning:</strong><br>
+                We’ll help you plan live shows, digital launches, or tour dates with intention. Everything from timelines and marketing to pricing and post-show follow-ups. We make sure your events feed into your long-term career goals.
+            </li>
+            <li>
+                <strong>📚 Custom Tools & Templates:</strong><br>
+                You’ll receive checklists, planning templates, email scripts, and other tools built for artists — so you can execute your plans faster and more confidently between sessions.
+            </li>
+        </ul>
 
-    <p>Monthly 1:1 coaching tailored to you; your music, your goals.
-<br><br>
-This isn’t a one-size-fits-all formula...
-<br><br>
-It’s personal, strategic, and built around your vision.
-<br><br>
-Whether you're planning a release, struggling with visibility, stuck in burnout, or need to make sense of monetisation — we’re here to guide you through every business decision with clarity and confidence.
-<br><br>
-We're not a label or manager. Think of us as your behind-the-scenes advisor, strategist, and partner in progress.</p>
-    <br><br>
-    <h2>WHAT'S INCLUDED?</h2>
-    <br>
-    <p><b>🎯 Personalised Strategy Sessions:</b>
-<br><br>
-Each month, you’ll have a private 1:1 coaching session focused on the current needs of your music career. We’ll work through your priorities — whether that’s building your fanbase, launching a new product, pitching your music, or restructuring your revenue streams.
-<br><br>
-<b>📈 Revenue & Monetisation Planning:</b>
-<br><br>
-We’ll audit your existing income sources and create a plan to diversify your revenue — from merch and sync licensing to fan subscriptions, coaching, or digital products. Our goal is to help you earn consistently from your creativity.
-<br><br>
-<b>📣 Digital Marketing & Promotion:</b>
-<br><br>
-Get expert guidance on how to run your socials like a brand, build an engaged audience, and launch campaigns that actually move the needle. We’ll cover content strategy, funnel building, email marketing, and conversion tactics tailored to artists.
-<br><br>
-<b>🧭 Lead Generation & Audience Building:</b>
-<br><br>
-From fan acquisition to music buyers and industry contacts — we’ll help you identify your ideal audience and create a strategy to reach them. Think: smarter outreach, better engagement, and long-term loyalty.
-<br><br>
-<b>🧠 Mindset & Burnout Prevention:</b>
-<br><br>
-We’ll help you create boundaries, routines, and mental clarity so you don’t burn out chasing every opportunity. Think of this as a tune-up for your mindset — equipping you with the focus, resilience, and self-belief to make bold moves.
-<br><br>
-<b>🎤 Gig & Launch Planning:</b>
-<br><br>
-We’ll help you plan live shows, digital launches, or tour dates with intention. Everything from timelines and marketing to pricing and post-show follow-ups. We make sure your events feed into your long-term career goals.
-<br><br>
-<b>📚 Custom Tools & Templates:</b>
-<br><br>
-You’ll receive checklists, planning templates, email scripts, and other tools built for artists — so you can execute your plans faster and more confidently between sessions.
+        <h3>WHO IS THIS FOR?</h3>
+        <p>
+            Independent musicians, DIY artists, and music entrepreneurs who are serious about treating their career like a business — and want ongoing guidance from someone who gets both the music and the business.
+        </p>
 
-</p>
-  </section>
+        <h3>WHAT TO EXPECT</h3>
+        <p>
+            This is a monthly commitment to your growth. It’s not a quick fix — it’s a sustainable, strategic, and empowering partnership. Expect to make smarter decisions, feel less overwhelmed, and finally start gaining momentum in the areas that matter most.
+        </p>
 
-  <section class="cta">
-    <h2>WHO IS THIS FOR?</h2>
-    <br>
-    <p>Independent musicians, DIY artists, and music entrepreneurs who are serious about treating their career like a business — and want ongoing guidance from someone who gets both the music and the business.</p>
+        <p class="final-call-to-action">
+            Let’s take your music from hobby to enterprise. Book your free intro chat to see if this consultancy is right for you. No pressure, no hard sell — just clarity and a clear next step.
+        </p>
 
-  <section class="services-section">
-    <h2>WHAT TO EXPECT</h2>
-    <br>
-    <p>This is a monthly commitment to your growth. It’s not a quick fix — it’s a sustainable, strategic, and empowering partnership. Expect to make smarter decisions, feel less overwhelmed, and finally start gaining momentum in the areas that matter most.</p>
-<br><br>
-    <h2>READY TO BUILD A MUSIC BUSINESS?</h2>
-<br>
-    <p>Let’s take your music from hobby to enterprise. Book your free intro chat to see if this consultancy is right for you. No pressure, no hard sell — just clarity and a clear next step.</p>
-    
-    <button class="hero-button">GET IN TOUCH</button>
-  </section>
+        <div class="button-container">
+            <button class="hero-button" onclick="location.href='contact.html'">GET IN TOUCH</button>
+        </div>
+    </section>
 
-  <script>
-    function toggleMobileMenu() {
-      document.getElementById("mobileNav").classList.toggle("open");
-    }
-  </script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById("mobileNav").classList.toggle("open");
+        }
+    </script>
 </body>
 </html>
