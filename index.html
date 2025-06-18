@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Nunito Sans', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f7f7f7; /* Light grey background */
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
@@ -23,7 +23,7 @@
 
         /* Header Styles */
         header {
-            background-color: #000;
+            background-color: #000; /* Black header */
             color: #fff;
             padding: 1rem 2rem;
             display: flex;
@@ -71,9 +71,9 @@
             top: 100%; /* Positions it right below the header */
             left: 0;
             width: 100%;
-            background-color: #000;
+            background-color: #000; /* Black mobile nav background */
             z-index: 15;
-            text-align: center;
+            text-align: center; /* Changed to center for consistency */
         }
         nav.mobile-nav.open {
             display: block; /* Toggled by JavaScript */
@@ -86,7 +86,7 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Hero Section Styles */
+        /* Hero Section Styles (from original Creative365, with minor adjustments) */
         .hero {
             width: 100%; /* Full width for the background */
             padding: 4rem 0; /* Increased top/bottom padding for hero section */
@@ -148,7 +148,7 @@
 
         /* Hero Button Styles */
         .hero-button {
-            background-color: #78C976;
+            background-color: #78C976; /* Green button */
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -161,55 +161,213 @@
             transition: background-color 0.3s ease;
         }
         .hero-button:hover {
-            background-color: #5fae60;
+            background-color: #5fae60; /* Darker green on hover */
         }
 
-        /* Panel, CTA, and Services Section Styles */
-        .panel, .cta, .services-section {
+        /* --- SECTIONS FROM RUBBISH REMOVAL THEME ADAPTED --- */
+
+        /* General Section Styles (replaces .panel, .cta, .services-section from original) */
+        .content-section {
             max-width: 800px;
             margin: 4rem auto; /* Increased margin top/bottom for sections */
             padding: 0 1rem; /* Added horizontal padding for content */
             text-align: left;
-            font-size: 1.30rem;
+            font-size: 1.25rem; /* Base font size */
+            color: #222;
         }
-        .panel p, .cta p, .services-section p {
+        .content-section p {
             margin-bottom: 1.5rem; /* Add consistent bottom margin to paragraphs */
+            line-height: 1.6;
         }
 
-        /* H2 font change */
+        /* H2 & H3 font change for main content sections */
         h2 {
             font-family: 'Oswald', sans-serif;
             font-size: 2.2rem; /* Adjusted font size for h2 elements */
-            margin-bottom: 1.5rem; /* Added bottom margin for headings */
+            margin-bottom: 2.5rem; /* Added bottom margin for main heading */
+            text-align: center; /* Center main heading */
+            color: #222; /* Consistent dark color */
+        }
+        h3 { /* For subheadings within sections, if needed */
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
         }
 
         ul {
             list-style: none;
             padding: 0;
-            margin-top: 1rem; /* Added margin to top of lists */
-            margin-bottom: 1.5rem; /* Added margin to bottom of lists */
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         li::before {
-            content: '✔️ ';
+            content: '✔️ '; /* Green checkmark */
             margin-right: 5px;
+            color: #78C976; /* Matching hero button green for consistency */
+        }
+        
+        /* Service Panel Section (replaces rubbish types section) */
+        .service-panel-section {
+            background-color: #eaeaea; /* Light grey background */
+            padding: 4rem 1rem;
+            text-align: center;
         }
 
-        /* Specific button margin for CTA section if needed */
-        .cta button {
-            margin-top: 1.5rem;
-        }
-        /* Specific margin for paragraphs within services-section to ensure spacing between items */
-        .services-section p {
-            margin-bottom: 2rem; /* More space between service descriptions */
-            line-height: 1.6; /* Ensure good line spacing for service descriptions */
-        }
-        .services-section p strong {
-            display: block; /* Makes the strong tag take full width, pushing text below */
-            margin-bottom: 0.5rem; /* Space between title and description */
+        .panels-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Quiz Modal Overlay Styles */
+        .service-panel {
+            background-color: #ffffff; /* White panel background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-panel h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .service-panel p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .panel-button {
+            background-color: #000; /* Black button */
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .panel-button:hover {
+            background-color: #333; /* Darker black on hover */
+        }
+
+        /* About Us (from original .panel content, but structured as a new section) */
+        .about-section {
+            background-color: #f7f7f7; /* Light grey background */
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+        .about-section .content-section { /* Apply common content section styles */
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .about-section p {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        .about-section .bold-quote {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Core Values/CTA Section (from original .cta list, adapted to look like testimonials) */
+        .values-section {
+            background-color: #eaeaea; /* Light grey background for contrast */
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 280px;
+            max-width: 380px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .value-card h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem;
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .value-card p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        /* Contact Section (using a simple button, similar to quote-form-section idea) */
+        .contact-section {
+            background-color: #000; /* Black background */
+            padding: 4rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+        .contact-section h2 {
+            color: #fff; /* White heading */
+        }
+        .contact-section p {
+            margin-bottom: 2.5rem; /* More space before button */
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        /* Quiz Modal Overlay Styles (from original Creative365) */
         .quiz-overlay {
             position: fixed;
             top: 0;
@@ -278,20 +436,29 @@
 
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
         @media (max-width: 767px) {
-            /* Adjust general section widths and padding for mobile */
-            .hero-inner,
-            .panel,
-            .cta,
-            .services-section {
-                width: 90%; /* Keep content constrained */
-                margin: 3rem auto; /* Adjusted margin for mobile */
-                text-align: left; /* Left-align text */
+            /* Show hamburger menu and hide desktop nav on mobile */
+            .hamburger-menu {
+                display: flex; /* Show hamburger */
             }
-            /* Add this H2 rule for mobile only */
-            h2 {
-                font-size: 1.8rem; /* Adjusted font size for h2 elements for mobile */
-                margin-bottom: 1rem; /* Adjusted margin for mobile headings */
+            nav.desktop-nav {
+                display: none; /* Hide desktop nav */
             }
+            /* Apply smaller header padding only on mobile */
+            header {
+                padding: 0.8rem 2rem; /* Reduced top and bottom padding for a smaller mobile header */
+            }
+            .logo {
+                margin-left: -1rem; /* Adjust this value to align with your heading's left margin */
+            }
+            header {
+                padding-left: 1.5rem; /* Example: Slightly reduce left padding of header */
+                padding-right: 1.5rem; /* Example: Slightly reduce right padding of header */
+            }
+
+            .hero {
+                padding: 3rem 1rem; /* Adjust padding for mobile hero */
+            }
+
             /* Hide desktop specific hero text */
             .desktop-line1, .desktop-line2 {
                 display: none;
@@ -319,27 +486,87 @@
                 margin-bottom: 0.5rem;
             }
 
-            /* Show hamburger menu and hide desktop nav on mobile */
-            .hamburger-menu {
-                display: flex; /* Show hamburger */
-            }
-            nav.desktop-nav {
-                display: none; /* Hide desktop nav */
-            }
-
             .hero-button {
                 margin-top: 1.5rem; /* Adjusted button margin for mobile */
             }
 
+            /* Content sections mobile adjustments */
+            .content-section {
+                width: 90%;
+                margin: 3rem auto;
+                padding: 0;
+                font-size: 1.1rem;
+            }
+            h2 {
+                font-size: 1.8rem; /* Smaller H2 for mobile */
+                margin-bottom: 1.5rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+                margin-top: 1.5rem;
+                margin-bottom: 0.8rem;
+            }
+            .content-section p {
+                margin-bottom: 1rem;
+            }
+            .about-section .bold-quote {
+                font-size: 1.6rem; /* Smaller for mobile */
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Service panels mobile adjustments */
+            .service-panel-section {
+                padding: 3rem 1rem;
+            }
+            .service-panel {
+                min-width: unset; /* Remove min-width to allow better shrinking */
+                max-width: 95%; /* Adjust max-width for mobile panels */
+                padding: 1.5rem;
+            }
+            .service-panel h3 {
+                font-size: 1.5rem;
+            }
+            .service-panel p {
+                font-size: 1.1rem;
+            }
+            .panel-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Values section mobile adjustments */
+            .values-section {
+                padding: 3rem 1rem;
+            }
+            .value-card {
+                min-width: unset;
+                max-width: 95%;
+                padding: 1.5rem;
+            }
+            .value-card h3 {
+                font-size: 1.5rem;
+            }
+            .value-card p {
+                font-size: 1.1rem;
+            }
+
+            /* Contact section mobile adjustments */
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+            .contact-section p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Quiz modal mobile adjustments */
             .quiz-overlay {
                 padding: 10px; /* Reduce padding on mobile */
             }
             .quiz-container {
                 max-width: 95%; /* Adjust max width for mobile */
                 padding: 10px; /* Reduce padding inside container */
-            }
-            .quiz-container iframe {
-                 /* Adjust height if necessary for mobile; Tally's dynamicHeight might handle this */
             }
         }
     </style>
@@ -388,45 +615,65 @@
         </div>
     </section>
 
-    <section class="panel">
-        <h2>[INSERT GENERIC, BORING, FORGETTABLE "ABOUT US"]</h2>
-        <p>Let's get to the point...</p>
-        <p>You didn't become a musician to spend your nights doom-scrolling socials at 3am trying to figure out how to get more fan engagement.</p>
-        <p>*ping*</p>
-        <p>"Mum liked your post"</p>
-        <p>...Congrats, you're trending in the family group chat 😒</p>
-        <p>Nor did you become a musician so you could work some meaningless 9-to-5 in some soul sucking office fake-smiling through some bullshit "lunch-n-learn" Teams meeting that could’ve easily been an email 🤢🤮</p>
-        <p>"How are your numbers looking for end of month"</p>
-        <p>Shit Clive, pure shit! I'm a musician, not a god damn mathmagician.</p>
+    <section class="about-section">
+        <div class="content-section">
+            <h2>OUR STORY</h2>
+            <p class="bold-quote">"You didn't become a musician to spend your nights doom-scrolling socials at 3 am trying to figure out how to get more fan engagement."</p>
+            <p>
+                As musicians ourselves, we understand the grind. You got into music to create, perform, and connect, not to become a social media expert or a corporate drone stuck in endless meetings.
+            </p>
+            <p>
+                We've been there – the late nights, the constant hustle for engagement, the frustration of feeling unheard. And we know that "likes" don't pay the bills or build a lasting career.
+            </p>
+            <p>
+                That's why Creative365 exists. We take the burden of business development and promotion off your shoulders, so you can focus on what you do best: making incredible music.
+            </p>
+        </div>
     </section>
 
-    <section class="cta">
-        <h2>SO WHAT'S THIS ALL ABOUT THEN?</h2>
-        <p>We help musicians build sustainable careers by:</p>
-        <ul>
-            <li>#1 Growing a consistent and engaged fanbase.</li>
-            <li>#2 Maintaining reliable and predictable income.</li>
-            <li>#3 Gaining exposure through publications and radio.</li>
-        </ul>
-        <button class="hero-button" onclick="location.href='contact.html'">GET STARTED</button>
+    <section class="values-section">
+        <h2>HOW WE HELP YOU SUCCEED</h2>
+        <div class="values-container">
+            <div class="value-card">
+                <h3>Consistent Fanbase Growth</h3>
+                <p>We implement strategies to help you grow a dedicated and engaged fanbase that truly connects with your art, turning casual listeners into loyal supporters.</p>
+            </div>
+            <div class="value-card">
+                <h3>Reliable Income Streams</h3>
+                <p>We work with you to identify and develop predictable revenue streams, ensuring you have a stable and sustainable income to support your passion.</p>
+            </div>
+            <div class="value-card">
+                <h3>Wider Exposure & Recognition</h3>
+                <p>We secure features, interviews, and airplay through targeted radio and media outreach, giving your music the exposure it deserves.</p>
+            </div>
+        </div>
     </section>
 
-    <section class="services-section">
-        <h2>SERVICES</h2>
-        <p>
-            <strong><a href="music-consultancy.html" style="color: inherit; text-decoration: none;">💡 MUSIC BUSINESS CONSULTANCY</a></strong><br>
-            Monthly 1:1 coaching tailored to your music career. From building revenue streams and digital marketing to lead generation, mindset, burnout prevention, and gig planning — we cover all the business strategy so you can focus on your music. We’re not managers or a record label, just your go-to professional advisor and strategist.
-        </p>
-        <p>
-            <strong><a href="radiopitching.html" style="color: inherit; text-decoration: none;">📡 RADIO PITCHING</a></strong><br>
-            Each month, we craft your Electronic Press Kit (EPK) and pitch your music to 5–10 targeted radio stations to get your tracks on air.
-        </p>
-        <p>
-            <strong><a href="prmedia.html" style="color: inherit; text-decoration: none;">📣 PR & MEDIA OUTREACH</a></strong><br>
-            We develop your unique story and send it directly to journalists and media outlets, securing features, interviews, and press coverage to grow your audience.
-        </p>
-        <p style="margin-top: 2rem;">Any questions, let's chat!</p>
-        <button class="hero-button" onclick="location.href='contact.html'">CONTACT US</button>
+    <section class="service-panel-section">
+        <h2>OUR SERVICES</h2>
+        <div class="panels-container">
+            <div class="service-panel">
+                <h3>💡 Music Business Consultancy</h3>
+                <p>Monthly 1:1 coaching tailored to your music career. We cover everything from building revenue streams and digital marketing to lead generation, mindset, burnout prevention, and gig planning – all the business strategy so you can focus on your music.</p>
+                <button class="panel-button" onclick="location.href='music-consultancy.html'">Learn More</button>
+            </div>
+            <div class="service-panel">
+                <h3>📡 Radio & Playlist Pitching</h3>
+                <p>Each month, we craft your Electronic Press Kit (EPK) and pitch your music to 5–10 targeted radio stations and influential playlists to get your tracks on air and in front of new listeners.</p>
+                <button class="panel-button" onclick="location.href='radiopitching.html'">Learn More</button>
+            </div>
+            <div class="service-panel">
+                <h3>📣 PR & Media Outreach</h3>
+                <p>We develop your unique story and send it directly to journalists and media outlets, securing features, interviews, and press coverage to significantly grow your audience and build your reputation.</p>
+                <button class="panel-button" onclick="location.href='prmedia.html'">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2>READY TO AMPLIFY YOUR MUSIC CAREER?</h2>
+        <p>Let's chat about your goals and how Creative365 can help you achieve them. Reach out today for a free consultation.</p>
+        <button class="hero-button" onclick="location.href='contact.html'">GET IN TOUCH</button>
     </section>
 
     <div id="quizModal" class="quiz-overlay">
