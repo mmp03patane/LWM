@@ -259,7 +259,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             flex: 1;
-            min-width: 280px;
+            /* min-width removed for better mobile stacking */
             max-width: 350px;
             text-align: left;
             display: flex;
@@ -359,7 +359,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             flex: 1;
-            min-width: 280px;
+            /* min-width removed for better mobile stacking */
             max-width: 380px;
             text-align: left;
             display: flex;
@@ -637,8 +637,8 @@
                 padding: 3rem 1rem;
             }
             .service-panel {
-                min-width: unset;
-                max-width: 95%;
+                min-width: 90%; /* Forces stacking */
+                max-width: 95%; /* Adjusted for better mobile padding */
                 padding: 1.5rem;
             }
             .service-panel h3 {
@@ -657,8 +657,8 @@
                 padding: 3rem 1rem;
             }
             .value-card {
-                min-width: unset;
-                max-width: 95%;
+                min-width: 90%; /* Forces stacking */
+                max-width: 95%; /* Adjusted for better mobile padding */
                 padding: 1.5rem;
             }
             .value-card h3 {
