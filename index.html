@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Creative365</title>
+    <title>Live Wire Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
     <style>
         /* Universal Box-sizing and Base Styles */
@@ -29,8 +29,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            z-index: 1000; /* Ensure header is above quiz overlay */
+            position: fixed; /* Changed to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.3s ease-out; /* For hide/show animation */
+        }
+        header.hidden {
+            transform: translateY(-100%); /* Move header up to hide */
         }
         .logo img {
             height: 45px; /* Adjusted logo height for better balance */
@@ -73,7 +80,7 @@
             width: 100%;
             background-color: #000; /* Black mobile nav background */
             z-index: 15;
-            text-align: center; /* Changed to center for consistency */
+            text-align: center;
         }
         nav.mobile-nav.open {
             display: block; /* Toggled by JavaScript */
@@ -86,19 +93,40 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Hero Section Styles (from original Creative365, with minor adjustments) */
+        /* Hero Section Styles */
         .hero {
-            width: 100%; /* Full width for the background */
-            padding: 4rem 0; /* Increased top/bottom padding for hero section */
-            background: #383838; /* Dark background color */
-            color: #fff; /* White text color for hero section */
+            width: 100%;
+            padding: 4rem 0;
+            background: #383838;
+            color: #fff;
+            padding-top: calc(4rem + 65px); /* Adjust for fixed header height */
         }
+
+        /* Hero Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .scroll-wrapper,
+        .hero-paragraph,
+        .hero-paragraph-quiz,
+        .hero-button {
+            opacity: 0; /* Hidden by default */
+            animation: fadeIn 1s ease-out forwards; /* Apply animation */
+        }
+
+        .hero .scroll-wrapper { animation-delay: 0.2s; }
+        .hero-paragraph { animation-delay: 0.5s; }
+        .hero-paragraph-quiz { animation-delay: 0.8s; }
+        .hero-button { animation-delay: 1.1s; }
+
 
         /* Inner container for hero content to constrain width */
         .hero-inner {
             max-width: 800px;
-            margin: 0 auto; /* Center the content */
-            padding: 0 1rem; /* Add some horizontal padding for smaller screens */
+            margin: 0 auto;
+            padding: 0 1rem;
         }
 
         .scroll-wrapper {
@@ -121,11 +149,11 @@
             gap: 0.5rem;
             font-size: 3.2rem;
             line-height: 1.2;
-            white-space: nowrap; /* Keeps "WITH" and static text on one line */
+            white-space: nowrap;
             margin-top: 0.5rem;
         }
         .desktop-line2 span:first-child {
-            flex-shrink: 0; /* Prevents "WITH" from shrinking */
+            flex-shrink: 0;
         }
 
         /* Hide mobile specific elements by default on desktop */
@@ -135,15 +163,15 @@
 
         /* Styles for paragraphs within the hero section */
         .hero-paragraph {
-            margin-top: 1.5rem; /* Increased margin top for spacing */
+            margin-top: 1.5rem;
             font-style: italic;
             font-size: 1.30rem;
-            line-height: 1.5; /* Added line height for readability */
+            line-height: 1.5;
         }
         .hero-paragraph-quiz {
-            margin-top: 0.5rem; /* Adjusted margin top */
+            margin-top: 0.5rem;
             font-size: 1.30rem;
-            line-height: 1.5; /* Added line height for readability */
+            line-height: 1.5;
         }
 
         /* Hero Button Styles */
@@ -157,7 +185,7 @@
             text-transform: uppercase;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 2rem; /* Increased margin top for button */
+            margin-top: 2rem;
             transition: background-color 0.3s ease;
         }
         .hero-button:hover {
@@ -166,29 +194,29 @@
 
         /* --- SECTIONS FROM RUBBISH REMOVAL THEME ADAPTED --- */
 
-        /* General Section Styles (replaces .panel, .cta, .services-section from original) */
+        /* General Section Styles */
         .content-section {
             max-width: 800px;
-            margin: 4rem auto; /* Increased margin top/bottom for sections */
-            padding: 0 1rem; /* Added horizontal padding for content */
+            margin: 4rem auto;
+            padding: 0 1rem;
             text-align: left;
-            font-size: 1.25rem; /* Base font size */
+            font-size: 1.25rem;
             color: #222;
         }
         .content-section p {
-            margin-bottom: 1.5rem; /* Add consistent bottom margin to paragraphs */
+            margin-bottom: 1.5rem;
             line-height: 1.6;
         }
 
         /* H2 & H3 font change for main content sections */
         h2 {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem; /* Adjusted font size for h2 elements */
-            margin-bottom: 2.5rem; /* Added bottom margin for main heading */
-            text-align: center; /* Center main heading */
-            color: #222; /* Consistent dark color */
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #222;
         }
-        h3 { /* For subheadings within sections, if needed */
+        h3 {
             font-family: 'Oswald', sans-serif;
             font-size: 1.7rem;
             margin-top: 2rem;
@@ -204,9 +232,9 @@
         }
 
         li::before {
-            content: '✔️ '; /* Green checkmark */
+            content: '✔️ ';
             margin-right: 5px;
-            color: #78C976; /* Matching hero button green for consistency */
+            color: #78C976;
         }
         
         /* Service Panel Section (replaces rubbish types section) */
@@ -237,6 +265,13 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+        }
+        .service-panel.animate-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-panel h3 {
@@ -284,7 +319,7 @@
             padding: 4rem 1rem;
             text-align: center;
         }
-        .about-section .content-section { /* Apply common content section styles */
+        .about-section .content-section {
             margin-top: 0;
             margin-bottom: 0;
         }
@@ -331,7 +366,15 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
         }
+        .value-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .value-card h3 {
             font-family: 'Oswald', sans-serif;
             font-size: 1.7rem;
@@ -348,7 +391,80 @@
             text-align: center;
         }
 
-        /* Contact Section (using a simple button, similar to quote-form-section idea) */
+        /* FAQ Section Styles */
+        .faq-section {
+            background-color: #f7f7f7; /* White background for FAQ */
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+        }
+        .faq-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-question {
+            background-color: #f0f0f0;
+            padding: 1rem 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #e0e0e0;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 1rem 1.5rem;
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+            display: none; /* Hidden by default */
+            overflow: hidden;
+        }
+
+        /* Contact Section */
         .contact-section {
             background-color: #000; /* Black background */
             padding: 4rem 1rem;
@@ -359,7 +475,7 @@
             color: #fff; /* White heading */
         }
         .contact-section p {
-            margin-bottom: 2.5rem; /* More space before button */
+            margin-bottom: 2.5rem;
             font-size: 1.25rem;
             max-width: 700px;
             margin-left: auto;
@@ -367,23 +483,23 @@
             text-align: center;
         }
 
-        /* Quiz Modal Overlay Styles (from original Creative365) */
+        /* Quiz Modal Overlay Styles */
         .quiz-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1001; /* Above header */
+            z-index: 1001;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            overflow-y: auto; /* Allow scrolling for taller quizzes */
-            padding: 20px; /* Padding around the content */
+            overflow-y: auto;
+            padding: 20px;
         }
 
         .quiz-overlay.active {
@@ -393,22 +509,22 @@
 
         .quiz-container {
             position: relative;
-            background-color: #fff; /* Background for the quiz content */
+            background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            max-width: 900px; /* Max width for the quiz */
+            max-width: 900px;
             width: 100%;
-            height: auto; /* Adjust height based on content */
-            max-height: 90vh; /* Max height to fit viewport */
-            overflow-y: auto; /* Allow quiz content to scroll if needed */
+            height: auto;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .quiz-container iframe {
             width: 100%;
-            height: 1844px; /* Set the height as specified by Tally.so */
+            height: 1844px;
             border: none;
-            display: block; /* Remove extra space below iframe */
+            display: block;
         }
 
         .quiz-close-button {
@@ -428,7 +544,7 @@
             align-items: center;
             line-height: 1;
             padding: 0;
-            z-index: 1002; /* Ensure close button is above quiz content */
+            z-index: 1002;
         }
         .quiz-close-button:hover {
             background-color: #cc0000;
@@ -438,25 +554,26 @@
         @media (max-width: 767px) {
             /* Show hamburger menu and hide desktop nav on mobile */
             .hamburger-menu {
-                display: flex; /* Show hamburger */
+                display: flex;
             }
             nav.desktop-nav {
-                display: none; /* Hide desktop nav */
+                display: none;
             }
             /* Apply smaller header padding only on mobile */
             header {
-                padding: 0.8rem 2rem; /* Reduced top and bottom padding for a smaller mobile header */
+                padding: 0.8rem 2rem;
             }
             .logo {
-                margin-left: -1rem; /* Adjust this value to align with your heading's left margin */
+                margin-left: -1rem;
             }
             header {
-                padding-left: 1.5rem; /* Example: Slightly reduce left padding of header */
-                padding-right: 1.5rem; /* Example: Slightly reduce right padding of header */
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
             }
 
             .hero {
-                padding: 3rem 1rem; /* Adjust padding for mobile hero */
+                padding: 3rem 1rem;
+                padding-top: calc(3rem + 55px); /* Adjust for mobile fixed header height */
             }
 
             /* Hide desktop specific hero text */
@@ -487,7 +604,7 @@
             }
 
             .hero-button {
-                margin-top: 1.5rem; /* Adjusted button margin for mobile */
+                margin-top: 1.5rem;
             }
 
             /* Content sections mobile adjustments */
@@ -498,7 +615,7 @@
                 font-size: 1.1rem;
             }
             h2 {
-                font-size: 1.8rem; /* Smaller H2 for mobile */
+                font-size: 1.8rem;
                 margin-bottom: 1.5rem;
             }
             h3 {
@@ -510,7 +627,7 @@
                 margin-bottom: 1rem;
             }
             .about-section .bold-quote {
-                font-size: 1.6rem; /* Smaller for mobile */
+                font-size: 1.6rem;
                 margin-top: 1rem;
                 margin-bottom: 1.5rem;
             }
@@ -520,8 +637,8 @@
                 padding: 3rem 1rem;
             }
             .service-panel {
-                min-width: unset; /* Remove min-width to allow better shrinking */
-                max-width: 95%; /* Adjust max-width for mobile panels */
+                min-width: unset;
+                max-width: 95%;
                 padding: 1.5rem;
             }
             .service-panel h3 {
@@ -551,6 +668,19 @@
                 font-size: 1.1rem;
             }
 
+            /* FAQ section mobile adjustments */
+            .faq-section {
+                padding: 3rem 1rem;
+            }
+            .faq-question {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+            .faq-answer {
+                font-size: 1rem;
+                padding: 0.8rem 1rem;
+            }
+
             /* Contact section mobile adjustments */
             .contact-section {
                 padding: 3rem 1rem;
@@ -562,11 +692,11 @@
 
             /* Quiz modal mobile adjustments */
             .quiz-overlay {
-                padding: 10px; /* Reduce padding on mobile */
+                padding: 10px;
             }
             .quiz-container {
-                max-width: 95%; /* Adjust max width for mobile */
-                padding: 10px; /* Reduce padding inside container */
+                max-width: 95%;
+                padding: 10px;
             }
         }
     </style>
@@ -574,7 +704,7 @@
 <body>
     <header>
         <a href="index.html" class="logo">
-            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Creative365 Logo" />
+            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Live Wire Management Logo" />
         </a>
         <div class="hamburger-menu" onclick="toggleMobileMenu()">
             <div class="bar"></div>
@@ -617,17 +747,14 @@
 
     <section class="about-section">
         <div class="content-section">
-            <h2>OUR STORY</h2>
-            <p class="bold-quote">"You didn't become a musician to spend your nights doom-scrolling socials at 3 am trying to figure out how to get more fan engagement."</p>
-            <p>
-                As musicians ourselves, we understand the grind. You got into music to create, perform, and connect, not to become a social media expert or a corporate drone stuck in endless meetings.
-            </p>
-            <p>
-                We've been there – the late nights, the constant hustle for engagement, the frustration of feeling unheard. And we know that "likes" don't pay the bills or build a lasting career.
-            </p>
-            <p>
-                That's why Creative365 exists. We take the burden of business development and promotion off your shoulders, so you can focus on what you do best: making incredible music.
-            </p>
+            <h2>LET'S GET TO THE POINT...</h2>
+            <p>You didn't become a musician to spend your nights doom-scrolling socials at 3am trying to figure out how to get more fan engagement.</p>
+            <p>*ping*</p>
+            <p>"Mum liked your post"</p>
+            <p>...Congrats, you're trending in the family group chat 😒</p>
+            <p>Nor did you become a musician so you could work some meaningless 9-to-5 in some soul sucking office fake-smiling through some bullshit "lunch-n-learn" Teams meeting that could’ve easily been an email 🤢🤮</p>
+            <p>"How are your numbers looking for end of month"</p>
+            <p>Shit Clive, pure shit! I'm a musician, not a god damn mathmagician.</p>
         </div>
     </section>
 
@@ -670,9 +797,45 @@
         </div>
     </section>
 
+    <section class="faq-section">
+        <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">What is Live Wire Management?</div>
+                <div class="faq-answer">
+                    Live Wire Management is a music business consultancy and promotion agency. We help independent musicians build sustainable careers by providing expert guidance on business strategy, securing radio airplay, and gaining media coverage. We're not a record label or a management company in the traditional sense, but your strategic partners in the music industry.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Who is Live Wire Management for?</div>
+                <div class="faq-answer">
+                    We work with serious independent artists, bands, and producers who are ready to take their music career to the next level. If you're committed to your craft and looking for professional support in navigating the business side of music, Live Wire Management is for you.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What makes Live Wire Management different from other services?</div>
+                <div class="faq-answer">
+                    Unlike agencies that offer one-off services, we provide a holistic, ongoing partnership. Our monthly coaching and tailored promotional efforts mean we're invested in your long-term growth and success. We combine strategic business advice with hands-on pitching to ensure your music gets heard and your career thrives.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How quickly can I expect results?</div>
+                <div class="faq-answer">
+                    Results vary based on individual artist goals, commitment, and the nature of the music industry. While we work diligently to secure opportunities for you, building a sustainable career is a marathon, not a sprint. We focus on consistent progress and long-term impact rather than instant, fleeting virality.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you guarantee radio play or media features?</div>
+                <div class="faq-answer">
+                    No legitimate PR or pitching agency can guarantee specific outcomes like radio airplay or features, as the final decision rests with the radio stations and media outlets. However, our expertise lies in significantly increasing your chances by crafting compelling pitches, targeting the right contacts, and preparing your music for industry standards.
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact-section">
         <h2>READY TO AMPLIFY YOUR MUSIC CAREER?</h2>
-        <p>Let's chat about your goals and how Creative365 can help you achieve them. Reach out today for a free consultation.</p>
+        <p>Let's chat about your goals and how Live Wire Management can help you achieve them. Reach out today for a free consultation.</p>
         <button class="hero-button" onclick="location.href='contact.html'">GET IN TOUCH</button>
     </section>
 
@@ -706,6 +869,63 @@
             if (event.key === 'Escape' && document.getElementById('quizModal').classList.contains('active')) {
                 closeQuizModal();
             }
+        });
+
+        // --- Header Scroll Logic ---
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight; // Get header height once
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+                // Scrolling down past header height
+                header.classList.add('hidden');
+            } else if (scrollTop < lastScrollTop) {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // --- Scroll-in Animations ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 /* Trigger when 10% of element is visible */
+        };
+
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+        document.querySelectorAll('.value-card, .service-panel, .faq-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- FAQ Toggle Logic ---
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const isActive = button.classList.toggle('active');
+
+                if (isActive) {
+                    answer.style.display = 'block';
+                    answer.style.maxHeight = answer.scrollHeight + "px"; // Set initial height
+                } else {
+                    answer.style.display = 'none';
+                    answer.style.maxHeight = '0px';
+                }
+            });
         });
     </script>
 </body>
