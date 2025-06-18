@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Music Business Consultancy - Creative365</title>
+    <title>Music Business Consultancy - Live Wire Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
     <style>
         /* Universal Box-sizing and Base Styles */
@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Nunito Sans', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f7f7f7; /* Light grey background */
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
@@ -23,13 +23,21 @@
 
         /* Header Styles */
         header {
-            background-color: #000;
+            background-color: #000; /* Black header */
             color: #fff;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            position: fixed; /* Changed to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.3s ease-out; /* For hide/show animation */
+        }
+        header.hidden {
+            transform: translateY(-100%); /* Move header up to hide */
         }
         .logo img {
             height: 45px; /* Adjusted logo height for better balance */
@@ -70,7 +78,7 @@
             top: 100%; /* Positions it right below the header */
             left: 0;
             width: 100%;
-            background-color: #000;
+            background-color: #000; /* Black mobile nav background */
             z-index: 15;
             text-align: center;
         }
@@ -85,61 +93,121 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Main Content Section Styles */
-        .main-content-section {
-            max-width: 800px;
-            margin: 4rem auto; /* Consistent margin top/bottom for sections */
-            padding: 0 1rem; /* Consistent horizontal padding */
-            text-align: left;
-            font-size: 1.15rem; /* Slightly smaller base font for content for better readability */
-            color: #333; /* Darker text for main content */
-        }
-        .main-content-section p {
-            margin-bottom: 1rem; /* Add consistent bottom margin to paragraphs */
-            line-height: 1.7; /* Increased line height for better readability */
+        /* Hero Section Styles */
+        .hero {
+            width: 100%;
+            padding: 4rem 0;
+            background: #383838;
+            color: #fff;
+            padding-top: calc(4rem + 65px); /* Adjust for fixed header height */
         }
 
-        /* H2 & H3 font change */
-        h2 {
+        /* Hero Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .scroll-wrapper,
+        .hero-paragraph,
+        .hero-paragraph-quiz,
+        .hero-button {
+            opacity: 0; /* Hidden by default */
+            animation: fadeIn 1s ease-out forwards; /* Apply animation */
+        }
+
+        .hero .scroll-wrapper { animation-delay: 0.2s; }
+        .hero-paragraph { animation-delay: 0.5s; }
+        .hero-paragraph-quiz { animation-delay: 0.8s; }
+        .hero-button { animation-delay: 1.1s; }
+
+
+        /* Inner container for hero content to constrain width */
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .scroll-wrapper {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem; /* Adjusted font size for h2 elements */
-            margin-bottom: 2.5rem; /* Added bottom margin for main heading */
-            text-align: center; /* Center main heading */
-            color: #222; /* Consistent dark color */
+            font-weight: 700;
+            user-select: none;
+            text-align: center;
         }
-        h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.7rem; /* Adjusted font size for subheadings */
-            margin-top: 2.5rem; /* Space before subheadings */
-            margin-bottom: 1rem; /* Space after subheadings */
-            color: #333;
+
+        /* Desktop Hero Text Lines */
+        .desktop-line1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            display: block;
         }
-        .main-content-section ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-            padding-left: 1rem; /* Indent list items */
+        .desktop-line2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            margin-top: 0.5rem;
         }
-        .main-content-section ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1rem; /* Indent list items */
-            position: relative;
+        .desktop-line2 span:first-child {
+            flex-shrink: 0;
         }
-        .main-content-section ul li::before {
-            content: '✔️ ';
-            margin-right: 5px;
-            position: absolute;
-            left: -0.5rem; /* Adjust icon position */
-            color: #78C976; /* Green checkmark */
+
+        /* Hide mobile specific elements by default on desktop */
+        .mobile-line1, .mobile-line2 {
+            display: none;
         }
-        .main-content-section strong {
-            display: block; /* Makes the strong tag take full width, pushing text below */
-            margin-bottom: 0.5rem; /* Space between title and description */
-            font-size: 1.25rem; /* Slightly larger font for bolded titles */
+
+        /* Styles for paragraphs within the hero section */
+        .hero-paragraph {
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-size: 1.30rem;
+            line-height: 1.5;
+        }
+        .hero-paragraph-quiz {
+            margin-top: 0.5rem;
+            font-size: 1.30rem;
+            line-height: 1.5;
+        }
+
+        /* Hero Button Styles */
+        .hero-button {
+            background-color: #78C976; /* Green button */
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* Ensure no underline on links */
+            display: inline-block; /* Allows padding and margins */
+        }
+        .hero-button:hover {
+            background-color: #5fae60; /* Darker green on hover */
+        }
+
+        /* --- Main Content Sections (matching homepage .content-section) --- */
+        .content-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+            text-align: left;
+            font-size: 1.25rem;
             color: #222;
         }
-        .intro-quote {
+        .content-section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .intro-quote { /* Specific for the initial quote */
             font-family: 'Oswald', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
@@ -148,25 +216,168 @@
             color: #555;
             text-align: center;
         }
+
+        /* H2 & H3 font change for main content sections */
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #222;
+        }
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* New Panel Section for "What's Included" */
+        .details-panel-section {
+            background-color: #eaeaea; /* Light grey background */
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .details-panels-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-panel {
+            background-color: #ffffff; /* White panel background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 350px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+        }
+        .detail-panel.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-panel h3 { /* Using h3 for consistent styling but making it look like a list item title */
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem; /* Keep main H3 size */
+            color: #333;
+            margin-bottom: 0.5rem; /* Closer to paragraph */
+            margin-top: 0; /* Remove top margin from default h3 */
+            text-align: left;
+        }
+        .detail-panel p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 1rem; /* Space after paragraph */
+            flex-grow: 1;
+            text-align: left;
+        }
+        .detail-panel p::before {
+            content: '✔️ ';
+            margin-right: 5px;
+            color: #78C976; /* Green checkmark */
+        }
+        /* Contact Section (using homepage style) */
+        .contact-section {
+            background-color: #000; /* Black background */
+            padding: 4rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+        .contact-section h2 {
+            color: #fff; /* White heading */
+        }
+        .contact-section p {
+            margin-bottom: 2.5rem;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
         .button-container {
             text-align: center; /* Center the button */
             margin-top: 3rem; /* Space above the button */
             margin-bottom: 4rem; /* Space below the button */
         }
-        .final-call-to-action {
-            margin-top: 2rem;
-            margin-bottom: 1rem; /* Adjust as needed */
-            text-align: center;
-        }
-
 
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
         @media (max-width: 767px) {
-            .main-content-section {
+            /* Show hamburger menu and hide desktop nav on mobile */
+            .hamburger-menu {
+                display: flex;
+            }
+            nav.desktop-nav {
+                display: none;
+            }
+            /* Apply smaller header padding only on mobile */
+            header {
+                padding: 0.8rem 2rem;
+            }
+            .logo {
+                margin-left: -1rem;
+            }
+            header {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                padding-top: calc(3rem + 55px); /* Adjust for mobile fixed header height */
+            }
+
+            /* Hide desktop specific hero text */
+            .desktop-line1, .desktop-line2 {
+                display: none;
+            }
+
+            /* Show mobile specific hero text */
+            .mobile-line1 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.25rem;
+            }
+            .mobile-line2 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-button {
+                margin-top: 1.5rem;
+            }
+
+            /* Content sections mobile adjustments */
+            .content-section {
                 width: 90%;
                 margin: 3rem auto;
                 padding: 0;
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             h2 {
                 font-size: 1.8rem;
@@ -174,29 +385,41 @@
             }
             h3 {
                 font-size: 1.5rem;
-                margin-top: 2rem;
+                margin-top: 1.5rem;
                 margin-bottom: 0.8rem;
             }
-            .main-content-section p {
-                margin-bottom: 0.8rem;
-                line-height: 1.6;
-            }
-            .main-content-section strong {
-                font-size: 1.15rem;
-            }
-            .main-content-section ul {
-                padding-left: 0.5rem;
-            }
-            .main-content-section ul li {
-                padding-left: 1rem;
-            }
-            .main-content-section ul li::before {
-                left: 0;
+            .content-section p {
+                margin-bottom: 1rem;
             }
             .intro-quote {
                 font-size: 1.8rem;
                 margin-top: 1rem;
                 margin-bottom: 1.5rem;
+            }
+            
+            /* Details panels mobile adjustments */
+            .details-panel-section {
+                padding: 3rem 1rem;
+            }
+            .detail-panel {
+                min-width: 90%; /* Forces stacking */
+                max-width: 95%; /* Adjusted for better mobile padding */
+                padding: 1.5rem;
+            }
+            .detail-panel h3 {
+                font-size: 1.5rem;
+            }
+            .detail-panel p {
+                font-size: 1.1rem;
+            }
+
+            /* Contact section mobile adjustments */
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+            .contact-section p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
             .button-container {
                 margin-top: 2rem;
@@ -208,7 +431,7 @@
 <body>
     <header>
         <a href="index.html" class="logo">
-            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Creative365 Logo" />
+            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Live Wire Management Logo" />
         </a>
         <div class="hamburger-menu" onclick="toggleMobileMenu()">
             <div class="bar"></div>
@@ -216,30 +439,49 @@
             <div class="bar"></div>
         </div>
         <nav class="desktop-nav">
-            <a href="index.html">Home</a>
             <a href="radiopitching.html">Radio Pitching</a>
             <a href="prmedia.html">PR & Media Outreach</a>
+            <a href="music-consultancy.html">Music Consultancy</a>
             <a href="contact.html">Contact</a>
         </nav>
         <nav class="mobile-nav" id="mobileNav">
-            <a href="index.html" onclick="toggleMobileMenu()">Home</a>
             <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
             <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
+            <a href="music-consultancy.html" onclick="toggleMobileMenu()">Music Consultancy</a>
             <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
         </nav>
     </header>
 
-    <section class="main-content-section">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="scroll-wrapper desktop-hero">
+                <span class="desktop-line1">TURN YOUR TALENT</span>
+                <div class="desktop-line2">
+                    <span>INTO A BUSINESS.</span>
+                </div>
+            </div>
+
+            <div class="scroll-wrapper mobile-hero">
+                <span class="mobile-line1">TURN YOUR TALENT INTO</span>
+                <span class="mobile-line2">A BUSINESS.</span>
+            </div>
+            <p class="hero-paragraph">Take control of your music career with expert 1:1 guidance.</p>
+            <p class="hero-paragraph-quiz">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
+
+            <a href="contact.html" class="hero-button">Book a FREE Chat!</a>
+        </div>
+    </section>
+
+    <section class="content-section">
         <h2>💡 MUSIC BUSINESS CONSULTANCY</h2>
-        <p class="intro-quote">Because who the hell wants to sell their soul to a record company or greedy management agency...</p>
         <p>
-            Turn your talent into a thriving business, on <strong>your terms.</strong>
+            Turn your talent into a thriving business, on **your terms.**
         </p>
         <p>
             Monthly 1:1 coaching tailored to you; your music, your goals.
         </p>
         <p>
-            This isn’t a one-size-fits-all formula... It’s <strong>personal</strong>, <strong>strategic</strong>, and built around <strong>your vision.</strong>
+            This isn’t a one-size-fits-all formula... It’s **personal**, **strategic**, and built around **your vision.**
         </p>
         <p>
             Whether you're planning a release, struggling with visibility, stuck in burnout, or need to make sense of monetisation — we’re here to guide you through every business decision with clarity and confidence.
@@ -247,62 +489,110 @@
         <p>
             We're not a label or manager. Think of us as your behind-the-scenes advisor, strategist, and partner in progress.
         </p>
+    </section>
 
-        <h3>WHAT'S INCLUDED?</h3>
-        <ul>
-            <li>
-                <strong>🎯 Personalised Strategy Sessions:</strong><br>
-                Each month, you’ll have a private 1:1 coaching session focused on the current needs of your music career. We’ll work through your priorities — whether that’s building your fanbase, launching a new product, pitching your music, or restructuring your revenue streams.
-            </li>
-            <li>
-                <strong>📈 Revenue & Monetisation Planning:</strong><br>
-                We’ll audit your existing income sources and create a plan to diversify your revenue — from merch and sync licensing to fan subscriptions, coaching, or digital products. Our goal is to help you earn consistently from your creativity.
-            </li>
-            <li>
-                <strong>📣 Digital Marketing & Promotion:</strong><br>
-                Get expert guidance on how to run your socials like a brand, build an engaged audience, and launch campaigns that actually move the needle. We’ll cover content strategy, funnel building, email marketing, and conversion tactics tailored to artists.
-            </li>
-            <li>
-                <strong>🧭 Lead Generation & Audience Building:</strong><br>
-                From fan acquisition to music buyers and industry contacts — we’ll help you identify your ideal audience and create a strategy to reach them. Think: smarter outreach, better engagement, and long-term loyalty.
-            </li>
-            <li>
-                <strong>🧠 Mindset & Burnout Prevention:</strong><br>
-                We’ll help you create boundaries, routines, and mental clarity so you don’t burn out chasing every opportunity. Think of this as a tune-up for your mindset — equipping you with the focus, resilience, and self-belief to make bold moves.
-            </li>
-            <li>
-                <strong>🎤 Gig & Launch Planning:</strong><br>
-                We’ll help you plan live shows, digital launches, or tour dates with intention. Everything from timelines and marketing to pricing and post-show follow-ups. We make sure your events feed into your long-term career goals.
-            </li>
-            <li>
-                <strong>📚 Custom Tools & Templates:</strong><br>
-                You’ll receive checklists, planning templates, email scripts, and other tools built for artists — so you can execute your plans faster and more confidently between sessions.
-            </li>
-        </ul>
+    <section class="details-panel-section">
+        <h2>WHAT'S INCLUDED?</h2>
+        <div class="details-panels-container">
+            <div class="detail-panel">
+                <h3>Personalised Strategy Sessions</h3>
+                <p>Each month, you’ll have a private 1:1 coaching session focused on the current needs of your music career. We’ll work through your priorities — whether that’s building your fanbase, launching a new product, pitching your music, or restructuring your revenue streams.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Revenue & Monetisation Planning</h3>
+                <p>We’ll audit your existing income sources and create a plan to diversify your revenue — from merch and sync licensing to fan subscriptions, coaching, or digital products. Our goal is to help you earn consistently from your creativity.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Digital Marketing & Promotion</h3>
+                <p>Get expert guidance on how to run your socials like a brand, build an engaged audience, and launch campaigns that actually move the needle. We’ll cover content strategy, funnel building, email marketing, and conversion tactics tailored to artists.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Lead Generation & Audience Building</h3>
+                <p>From fan acquisition to music buyers and industry contacts — we’ll help you identify your ideal audience and create a strategy to reach them. Think: smarter outreach, better engagement, and long-term loyalty.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Mindset & Burnout Prevention</h3>
+                <p>We’ll help you create boundaries, routines, and mental clarity so you don’t burn out chasing every opportunity. Think of this as a tune-up for your mindset — equipping you with the focus, resilience, and self-belief to make bold moves.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Gig & Launch Planning</h3>
+                <p>We’ll help you plan live shows, digital launches, or tour dates with intention. Everything from timelines and marketing to pricing and post-show follow-ups. We make sure your events feed into your long-term career goals.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Custom Tools & Templates</h3>
+                <p>You’ll receive checklists, planning templates, email scripts, and other tools built for artists — so you can execute your plans faster and more confidently between sessions.</p>
+            </div>
+        </div>
+    </section>
 
-        <h3>WHO IS THIS FOR?</h3>
+    <section class="content-section">
+        <h2>WHO IS THIS FOR?</h2>
         <p>
             Independent musicians, DIY artists, and music entrepreneurs who are serious about treating their career like a business — and want ongoing guidance from someone who gets both the music and the business.
         </p>
 
-        <h3>WHAT TO EXPECT</h3>
+        <h2>WHAT TO EXPECT</h2>
         <p>
             This is a monthly commitment to your growth. It’s not a quick fix — it’s a sustainable, strategic, and empowering partnership. Expect to make smarter decisions, feel less overwhelmed, and finally start gaining momentum in the areas that matter most.
         </p>
+    </section>
 
-        <p class="final-call-to-action">
-            Let’s take your music from hobby to enterprise. Book your free intro chat to see if this consultancy is right for you. No pressure, no hard sell — just clarity and a clear next step.
-        </p>
-
-        <div class="button-container">
-            <button class="hero-button" onclick="location.href='contact.html'">GET IN TOUCH</button>
-        </div>
+    <section class="contact-section">
+        <h2>READY TO TRANSFORM YOUR MUSIC CAREER?</h2>
+        <p>Let’s take your music from hobby to enterprise. Book your free intro chat to see if this consultancy is right for you. No pressure, no hard sell — just clarity and a clear next step.</p>
+        <a href="contact.html" class="hero-button">GET IN TOUCH</a>
     </section>
 
     <script>
         function toggleMobileMenu() {
             document.getElementById("mobileNav").classList.toggle("open");
         }
+
+        // --- Header Scroll Logic (copied from homepage) ---
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+                // Scrolling down past header height
+                header.classList.add('hidden');
+            } else if (scrollTop < lastScrollTop) {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // --- Scroll-in Animations (copied from homepage) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 /* Trigger when 10% of element is visible */
+        };
+
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+        // Observe the new panels for animation
+        document.querySelectorAll('.detail-panel').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hero section animation for text elements
+        // The hero animation is handled purely by CSS animations with delays,
+        // so no JS observer is strictly needed for the hero text itself,
+        // but it's good to keep consistency if adding more JS-triggered animations.
     </script>
 </body>
 </html>
