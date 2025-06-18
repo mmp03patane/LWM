@@ -1,346 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Creative365</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
-  <style>
-    /* Universal Box-sizing and Base Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Nunito Sans', sans-serif;
-      background-color: #f7f7f7;
-      color: #222;
-      line-height: 1.6;
-      font-size: 1.25rem;
-      text-align: center;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative365</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
+    <style>
+        /* Universal Box-sizing and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #f7f7f7;
+            color: #222;
+            line-height: 1.6;
+            font-size: 1.25rem;
+            text-align: center;
+        }
 
-    /* Header Styles */
-    header {
-      background-color: #000;
-      color: #fff;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-    .logo img {
-      height: 30px;
-    }
+        /* Header Styles */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .logo img {
+            height: 45px; /* Adjusted logo height for better balance */
+        }
 
-    /* Desktop Navigation */
-    nav.desktop-nav {
-      display: block; /* Default to block for desktop */
-    }
-    nav.desktop-nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-family: 'Roboto', sans-serif;
-      text-transform: uppercase;
-    }
+        /* Desktop Navigation */
+        nav.desktop-nav {
+            display: block; /* Default to block for desktop */
+        }
+        nav.desktop-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
 
-    /* Hamburger Menu (Hidden by default on desktop) */
-    .hamburger-menu {
-      display: none; /* Hidden on desktop */
-      width: 30px;
-      height: 21px;
-      cursor: pointer;
-      flex-direction: column;
-      justify-content: space-between;
-      z-index: 20;
-    }
-    .hamburger-menu .bar {
-      height: 3px;
-      background-color: #fff;
-      width: 100%;
-    }
+        /* Hamburger Menu (Hidden by default on desktop) */
+        .hamburger-menu {
+            display: none; /* Hidden on desktop */
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 20;
+        }
+        .hamburger-menu .bar {
+            height: 3px;
+            background-color: #fff;
+            width: 100%;
+        }
 
-    /* Mobile Navigation (Hidden by default, shown with JS) */
-    nav.mobile-nav {
-      display: none; /* Hidden by default */
-      position: absolute;
-      top: 100%; /* Positions it right below the header */
-      left: 0;
-      width: 100%;
-      background-color: #000;
-      z-index: 15;
-      text-align: center;
-    }
-    nav.mobile-nav.open {
-      display: block; /* Toggled by JavaScript */
-    }
-    nav.mobile-nav a {
-      color: #fff;
-      display: block;
-      padding: 1rem;
-      text-transform: uppercase;
-      font-family: 'Roboto', sans-serif;
-    }
+        /* Mobile Navigation (Hidden by default, shown with JS) */
+        nav.mobile-nav {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%; /* Positions it right below the header */
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            z-index: 15;
+            text-align: center;
+        }
+        nav.mobile-nav.open {
+            display: block; /* Toggled by JavaScript */
+        }
+        nav.mobile-nav a {
+            color: #fff;
+            display: block;
+            padding: 1rem;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+        }
 
-    /* Hero Section Styles */
-    .hero {
-      width: 100%; /* Full width for the background */
-      padding: 3rem 0; /* Add top/bottom padding to hero section */
-      background: #383838; /* Dark background color */
-      color: #fff; /* White text color for hero section */
-    }
+        /* Hero Section Styles */
+        .hero {
+            width: 100%; /* Full width for the background */
+            padding: 4rem 0; /* Increased top/bottom padding for hero section */
+            background: #383838; /* Dark background color */
+            color: #fff; /* White text color for hero section */
+        }
 
-    /* Inner container for hero content to constrain width */
-    .hero-inner {
-        max-width: 800px;
-        margin: 0 auto; /* Center the content */
-        padding: 0 1rem; /* Add some horizontal padding for smaller screens */
-    }
+        /* Inner container for hero content to constrain width */
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto; /* Center the content */
+            padding: 0 1rem; /* Add some horizontal padding for smaller screens */
+        }
 
-    .scroll-wrapper {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 700;
-      user-select: none;
-      text-align: center;
-    }
+        .scroll-wrapper {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            user-select: none;
+            text-align: center;
+        }
 
-    /* Desktop Hero Text Lines */
-    .desktop-line1 {
-      font-size: 3.2rem; /* INCREASED FONT SIZE */
-      line-height: 1.2;
-      display: block;
-    }
-    .desktop-line2 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 3.2rem; /* INCREASED FONT SIZE */
-      line-height: 1.2;
-      white-space: nowrap; /* Keeps "WITH" and static text on one line */
-      margin-top: 0.5rem;
-    }
-    .desktop-line2 span:first-child {
-      flex-shrink: 0; /* Prevents "WITH" from shrinking */
-    }
+        /* Desktop Hero Text Lines */
+        .desktop-line1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            display: block;
+        }
+        .desktop-line2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            white-space: nowrap; /* Keeps "WITH" and static text on one line */
+            margin-top: 0.5rem;
+        }
+        .desktop-line2 span:first-child {
+            flex-shrink: 0; /* Prevents "WITH" from shrinking */
+        }
 
-    /* Hide mobile specific elements by default on desktop */
-    .mobile-line1, .mobile-line2 {
-      display: none;
-    }
+        /* Hide mobile specific elements by default on desktop */
+        .mobile-line1, .mobile-line2 {
+            display: none;
+        }
 
-    /* Styles for paragraphs within the hero section */
-    .hero-paragraph {
-      margin-top: 10px;
-      font-style: italic;
-      font-size: 1.30rem;
-    }
-    .hero-paragraph-quiz {
-      margin-top: 5px;
-      font-size: 1.30rem;
-    }
+        /* Styles for paragraphs within the hero section */
+        .hero-paragraph {
+            margin-top: 1.5rem; /* Increased margin top for spacing */
+            font-style: italic;
+            font-size: 1.30rem;
+            line-height: 1.5; /* Added line height for readability */
+        }
+        .hero-paragraph-quiz {
+            margin-top: 0.5rem; /* Adjusted margin top */
+            font-size: 1.30rem;
+            line-height: 1.5; /* Added line height for readability */
+        }
 
-    /* Hero Button Styles */
-    .hero-button {
-      background-color: #78C976;
-      color: #fff;
-      border: none;
-      padding: 1rem 2rem;
-      font-size: 1.2rem;
-      font-family: 'Roboto', sans-serif;
-      text-transform: uppercase;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      transition: background-color 0.3s ease;
-    }
-    .hero-button:hover {
-      background-color: #5fae60;
-    }
+        /* Hero Button Styles */
+        .hero-button {
+            background-color: #78C976;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 2rem; /* Increased margin top for button */
+            transition: background-color 0.3s ease;
+        }
+        .hero-button:hover {
+            background-color: #5fae60;
+        }
 
-    /* Panel, CTA, and Services Section Styles */
-    .panel, .cta, .services-section { /* Added .services-section */
-      max-width: 800px;
-      margin: 3rem auto;
-      text-align: left;
-      font-size: 1.30rem;
-    }
+        /* Panel, CTA, and Services Section Styles */
+        .panel, .cta, .services-section {
+            max-width: 800px;
+            margin: 4rem auto; /* Increased margin top/bottom for sections */
+            padding: 0 1rem; /* Added horizontal padding for content */
+            text-align: left;
+            font-size: 1.30rem;
+        }
+        .panel p, .cta p, .services-section p {
+            margin-bottom: 1.5rem; /* Add consistent bottom margin to paragraphs */
+        }
 
-    /* H2 font change */
-    h2 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 2rem; /* Adjusted font size for h2 elements to be smaller */
-    }
+        /* H2 font change */
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem; /* Adjusted font size for h2 elements */
+            margin-bottom: 1.5rem; /* Added bottom margin for headings */
+        }
 
-    .profile-photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem; /* Added margin to top of lists */
+            margin-bottom: 1.5rem; /* Added margin to bottom of lists */
+        }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+        li::before {
+            content: '✔️ ';
+            margin-right: 5px;
+        }
 
-    li::before {
-      content: '✔️ ';
-      margin-right: 5px;
-    }
+        /* Specific button margin for CTA section if needed */
+        .cta button {
+            margin-top: 1.5rem;
+        }
+        /* Specific margin for paragraphs within services-section to ensure spacing between items */
+        .services-section p {
+            margin-bottom: 2rem; /* More space between service descriptions */
+            line-height: 1.6; /* Ensure good line spacing for service descriptions */
+        }
+        .services-section p strong {
+            display: block; /* Makes the strong tag take full width, pushing text below */
+            margin-bottom: 0.5rem; /* Space between title and description */
+        }
 
-    /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
-    @media (max-width: 767px) {
-      /* Adjust general section widths and padding for mobile */
-      .hero-inner, /* Apply to inner container on mobile too */
-      .panel,
-      .cta,
-      .services-section { /* Added .services-section */
-        width: 90%; /* Keep content constrained */
-        margin: 2rem auto; /* Adjusted margin for mobile - DO NOT CHANGE */
-        text-align: left; /* NEW: Left-align text */
-      }
-      /* Add this H2 rule for mobile only */
-      h2 {
-        font-size: 1.7rem; /* Adjust this value to your desired smaller size for mobile */
-      }
-      /* Hide desktop specific hero text */
-      .desktop-line1, .desktop-line2 {
-        display: none;
-      }
+        /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
+        @media (max-width: 767px) {
+            /* Adjust general section widths and padding for mobile */
+            .hero-inner,
+            .panel,
+            .cta,
+            .services-section {
+                width: 90%; /* Keep content constrained */
+                margin: 3rem auto; /* Adjusted margin for mobile */
+                text-align: left; /* Left-align text */
+            }
+            /* Add this H2 rule for mobile only */
+            h2 {
+                font-size: 1.8rem; /* Adjusted font size for h2 elements for mobile */
+                margin-bottom: 1rem; /* Adjusted margin for mobile headings */
+            }
+            /* Hide desktop specific hero text */
+            .desktop-line1, .desktop-line2 {
+                display: none;
+            }
 
-      /* Show mobile specific hero text */
-      .mobile-line1 {
-        display: block;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        text-align: center;
-        user-select: none;
-        font-size: 2.7rem; /* INCREASED FONT SIZE */
-        line-height: 1.2;
-        margin-bottom: 0.25rem;
-      }
-      .mobile-line2 {
-        display: block;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 700;
-        text-align: center;
-        user-select: none;
-        font-size: 2.7rem; /* INCREASED FONT SIZE */
-        line-height: 1.2;
-        margin-bottom: 0.5rem;
-      }
+            /* Show mobile specific hero text */
+            .mobile-line1 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.25rem;
+            }
+            .mobile-line2 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
 
-      /* Show hamburger menu and hide desktop nav on mobile */
-      .hamburger-menu {
-        display: flex; /* Show hamburger */
-      }
-      nav.desktop-nav {
-        display: none; /* Hide desktop nav */
-      }
-    }
-  </style>
+            /* Show hamburger menu and hide desktop nav on mobile */
+            .hamburger-menu {
+                display: flex; /* Show hamburger */
+            }
+            nav.desktop-nav {
+                display: none; /* Hide desktop nav */
+            }
+
+            .hero-button {
+                margin-top: 1.5rem; /* Adjusted button margin for mobile */
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <a href="index.html" class="logo">
-      <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" />
-    </a>
-    <div class="hamburger-menu" onclick="toggleMobileMenu()">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <nav class="desktop-nav">
-      <a href="#">Contact</a>
-    </nav>
-    <nav class="mobile-nav" id="mobileNav">
-      <a href="#">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="scroll-wrapper desktop-hero">
-        <span class="desktop-line1">IS YOUR MUSIC READY</span>
-        <div class="desktop-line2">
-          <span>FOR RADIO & MEDIA?</span>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Creative365 Logo" />
+        </a>
+        <div class="hamburger-menu" onclick="toggleMobileMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
-      </div>
+        <nav class="desktop-nav">
+            <a href="#">Contact</a>
+        </nav>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-      <div class="scroll-wrapper mobile-hero">
-        <span class="mobile-line1">IS YOUR MUSIC READY FOR</span>
-        <span class="mobile-line2">RADIO & MEDIA?</span>
-      </div>
-      <!-- Added classes for specific paragraph styling -->
-      <p class="hero-paragraph">Sure... TikTok and YouTube views are great, but is your music Radio and Media ready?.</p>
-      <p class="hero-paragraph-quiz">👇 Take the quiz and find out!</p>
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="scroll-wrapper desktop-hero">
+                <span class="desktop-line1">IS YOUR MUSIC READY</span>
+                <div class="desktop-line2">
+                    <span>FOR RADIO & MEDIA?</span>
+                </div>
+            </div>
 
-      <button class="hero-button">Start Quiz!</button>
+            <div class="scroll-wrapper mobile-hero">
+                <span class="mobile-line1">IS YOUR MUSIC READY FOR</span>
+                <span class="mobile-line2">RADIO & MEDIA?</span>
+            </div>
+            <p class="hero-paragraph">Sure... TikTok and YouTube views are great, but is your music Radio and Media ready?</p>
+            <p class="hero-paragraph-quiz">👇 Take the quiz and find out!</p>
+
+            <button class="hero-button">Start Quiz!</button>
+        </div>
     </section>
 
-  <section class="panel">
+    <section class="panel">
+        <h2>[INSERT GENERIC, BORING, FORGETTABLE "ABOUT US"]</h2>
+        <p>Let's get to the point...</p>
+        <p>You didn't become a musician to spend your nights doom-scrolling socials at 3am trying to figure out how to get more fan engagement.</p>
+        <p>*ping*</p>
+        <p>"Mum liked your post"</p>
+        <p>...Congrats, you're trending in the family group chat 😒</p>
+        <p>Nor did you become a musician so you could work some meaningless 9-to-5 in some soul sucking office fake-smiling through some bullshit "lunch-n-learn" Teams meeting that could’ve easily been an email 🤢🤮</p>
+        <p>"How are your numbers looking for end of month"</p>
+        <p>Shit Clive, pure shit! I'm a musician, not a god damn mathmagician.</p>
+    </section>
 
-    <h2>[INSERT GENERIC, BORING, FORGETABLE "ABOUT US"]</h2>
-    <p>Let's get to the point...
+    <section class="cta">
+        <h2>SO WHAT'S THIS ALL ABOUT THEN?</h2>
+        <p>We help musicians build sustainable careers by:</p>
+        <ul>
+            <li>#1 Growing a consistent and engaged fanbase.</li>
+            <li>#2 Maintaining reliable and predictable income.</li>
+            <li>#3 Gaining exposure through publications and radio.</li>
+        </ul>
+        <button class="hero-button">GET STARTED</button>
+    </section>
 
-You didn't become a musician to spend your nights doom-scrolling socials at 3am trying to figure out how to get more fan engagement.
+    <section class="services-section">
+        <h2>SERVICES</h2>
+        <p>
+            <strong><a href="music-consultancy.html" style="color: inherit; text-decoration: none;">💡 MUSIC BUSINESS CONSULTANCY</a></strong><br>
+            Monthly 1:1 coaching tailored to your music career. From building revenue streams and digital marketing to lead generation, mindset, burnout prevention, and gig planning — we cover all the business strategy so you can focus on your music. We’re not managers or a record label, just your go-to professional advisor and strategist.
+        </p>
+        <p>
+            <strong><a href="radiopitching.html" style="color: inherit; text-decoration: none;">📡 RADIO PITCHING</a></strong><br>
+            Each month, we craft your Electronic Press Kit (EPK) and pitch your music to 5–10 targeted radio stations to get your tracks on air.
+        </p>
+        <p>
+            <strong><a href="prmedia.html" style="color: inherit; text-decoration: none;">📣 PR & MEDIA OUTREACH</a></strong><br>
+            We develop your unique story and send it directly to journalists and media outlets, securing features, interviews, and press coverage to grow your audience.
+        </p>
+        <p style="margin-top: 2rem;">Any questions, let's chat!</p>
+        <button class="hero-button">CONTACT US</button>
+    </section>
 
-*ping*
-
-"Mum liked your post"
-
-...Congrats, you're trending in the family group chat 😒
-
-Nor did you become a musician so you could work some meaningless 9-to-5 in some soul sucking office fake-smiling through some bullshit "lunch-n-learn" Teams meeting that could’ve easily been an email 🤢🤮
-
-"How are your numbers looking for end of month"
-
-Shit Clive, pure shit! I'm a musician, not a god damn mathmagician.
-
-</p>
-  </section>
-
-  <section class="cta">
-    <h2>SO WHAT'S THIS ALL ABOUT THEN?</h2>
-
-    <p>We help musicians build sustainable careers by:
-
-#1 Growing a consistent and engaged fanbase.
-
-#2 Maintaining reliable and predictable income.
-
-#3 Gaining exposure through publications and radio.</p>
-
-    <button>GET STARTED</button>
-  </section>
-
-  <!-- New Services Section -->
-  <section class="services-section">
-    <h2>SERVICES</h2>
-    <!-- Linked "MUSIC BUSINESS CONSULTANCY" to music-consultancy.html -->
-    <p><strong><a href="music-consultancy.html" style="color: inherit; text-decoration: none;">💡 MUSIC BUSINESS CONSULTANCY</a></strong><br>
-    Monthly 1:1 coaching tailored to your music career. From building revenue streams and digital marketing to lead generation, mindset, burnout prevention, and gig planning — we cover all the business strategy so you can focus on your music. We’re not managers or a record label, just your go-to professional advisor and strategist.</p>
-
-    <p style="margin-top: 1.5rem;"><strong><a href="radiopitching.html" style="color: inherit; text-decoration: none;">📡 RADIO PITCHING</a></strong><br>
-    Each month, we craft your Electronic Press Kit (EPK) and pitch your music to 5–10 targeted radio stations to get your tracks on air.</p>
-
-    <p style="margin-top: 1.5rem;"><strong><a href="prmedia.html" style="color: inherit; text-decoration: none;">📣 PR & MEDIA OUTREACH</a></strong><br>
-    We develop your unique story and send it directly to journalists and media outlets, securing features, interviews, and press coverage to grow your audience.</p>
-
-    <p style="margin-top: 2rem;">Any questions, lets chat!</p>
-    <button class="hero-button">CONTACT US</button>
-  </section>
-
-  <script>
-    function toggleMobileMenu() {
-      document.getElementById("mobileNav").classList.toggle("open");
-    }
-  </script>
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById("mobileNav").classList.toggle("open");
+        }
+    </script>
 </body>
 </html>
