@@ -85,57 +85,7 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Hero Section Styles (not used on this page, but kept for consistency if needed) */
-        .hero {
-            width: 100%;
-            padding: 4rem 0;
-            background: #383838;
-            color: #fff;
-        }
-
-        .hero-inner {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .scroll-wrapper {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 700;
-            user-select: none;
-            text-align: center;
-        }
-
-        .desktop-line1, .desktop-line2, .mobile-line1, .mobile-line2 {
-            display: none; /* Hidden on this page */
-        }
-
-        .hero-paragraph, .hero-paragraph-quiz {
-            margin-top: 1.5rem;
-            font-style: italic;
-            font-size: 1.30rem;
-            line-height: 1.5;
-        }
-
-        /* Hero Button Styles */
-        .hero-button {
-            background-color: #78C976;
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-family: 'Roboto', sans-serif;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 2rem;
-            transition: background-color 0.3s ease;
-        }
-        .hero-button:hover {
-            background-color: #5fae60;
-        }
-
-        /* Panel, CTA, and Services Section Styles */
+        /* Main Content Section Styles */
         .main-content-section { /* Custom class for this page's main content */
             max-width: 800px;
             margin: 4rem auto; /* Increased margin top/bottom for sections */
@@ -198,6 +148,25 @@
             margin-bottom: 4rem; /* Space below the button */
         }
 
+        /* Intro quote specific styles */
+        .intro-quote {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.0rem; /* Adjusted for this page */
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Specific list for 'WHAT WE DO' section */
+        .what-we-do-list li strong {
+            display: inline; /* Keep strong on the same line as the rest of the list item */
+        }
+        .what-we-do-list li {
+            margin-bottom: 1rem; /* More space between main service points */
+        }
+
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
         @media (max-width: 767px) {
             .main-content-section {
@@ -241,6 +210,11 @@
                 margin-top: 2rem;
                 margin-bottom: 3rem;
             }
+            .intro-quote {
+                font-size: 1.6rem; /* Smaller for mobile */
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -255,85 +229,104 @@
             <div class="bar"></div>
         </div>
         <nav class="desktop-nav">
-            <a href="index.html">Home</a> <a href="#">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="radiopitching.html">Radio Pitching</a>
+            <a href="prmedia.html">PR & Media Outreach</a>
+            <a href="music-consultancy.html">Music Consultancy</a>
+            <a href="contact.html">Contact</a>
         </nav>
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html" onclick="toggleMobileMenu()">Home</a>
-            <a href="#" onclick="toggleMobileMenu()">Contact</a>
+            <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
+            <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
+            <a href="music-consultancy.html" onclick="toggleMobileMenu()">Music Consultancy</a>
+            <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
         </nav>
     </header>
 
     <section class="main-content-section">
         <h2>📡 RADIO & PLAYLIST PITCHING</h2>
+        <p class="intro-quote">Stop waiting to be discovered. Get your music heard by the right ears and elevate your career.</p>
         <p>
-            Leave the noise behind. Get your music in front of the right audience.
+            Our dedicated radio plugging campaign is engineered to amplify your sound across Australia. We connect your music with the stations that genuinely fit your vibe — from influential community broadcasters to national tastemakers.
         </p>
         <p>
-            Our radio plugging campaign is built to connect your music with the stations that fit your sound — from grassroots community radio to influential online broadcasters.
-        </p>
-
-        <h3>PITCHING TO STATIONS:</h3>
-        <p>
-            We will pitch your track(s) to a carefully curated list of 5 - 10 radio stations that align with your music genre. Stations include a mix of independent, local, and internet-based radio platforms. You’ll receive a detailed report of each radio station contacted, including responses and follow-ups.
+            This isn't just about sending emails; it's about strategic outreach, compelling presentation, and persistent follow-up to build genuine buzz around your release.
         </p>
 
-        <h3>RADIO INTERVIEWS:</h3>
-        <p>
-            We will advocate on your behalf and endeavour to secure a radio interview on an independent or online station, tailored to your story and music career. We will arrange the interview, help with preparation, and ensure everything runs smoothly. The interview will also be pitched to radio stations for cross-promotion.
-        </p>
+        <h3>WHAT WE DO FOR YOU:</h3>
+        <ul class="what-we-do-list">
+            <li>
+                <strong>Targeted Station Pitching (5-10 Stations):</strong><br>
+                We research and create a carefully curated list of 5 to 10 Australian radio stations that genuinely align with your music's genre and sound. This includes a strategic mix of independent, local, community, and online radio platforms, maximizing the relevance of each pitch. Our aim is to connect you with stations most likely to embrace and play your track(s).
+            </li>
+            <li>
+                <strong>Professional Press Release & Bio Creation:</strong><br>
+                We craft a concise, compelling, and radio-friendly press release and artist bio specifically designed to grab the attention of music directors and presenters. We highlight your unique story, key achievements, and the appeal of your new track(s), making it easy for stations to feature you.
+            </li>
+            <li>
+                <strong>EPK Compilation & Distribution:</strong><br>
+                We compile all your essential assets (radio-ready track, press release, bio, high-resolution photos, and relevant links) into a professionally organized Electronic Press Kit (EPK) and manage its secure distribution to our target stations.
+            </li>
+            <li>
+                <strong>Strategic Follow-Up & Advocacy:</strong><br>
+                We handle all follow-up communications with stations, diligently pursuing airplay opportunities and fostering relationships within the radio community on your behalf. Our persistent approach ensures your music remains top-of-mind.
+            </li>
+            <li>
+                <strong>Radio Interview Coordination (if applicable):</strong><br>
+                For artists open to interviews, we actively advocate to secure slots on independent or online stations. We manage the logistics, provide guidance on preparation, and help shape your talking points to ensure a smooth and impactful interview that further promotes your music.
+            </li>
+            <li>
+                <strong>Detailed Reporting & Insights:</strong><br>
+                You'll receive regular updates and a comprehensive final report detailing every station contacted, their responses, confirmed airplay, and any interview opportunities. This transparent feedback provides valuable insights for your ongoing career strategy.
+            </li>
+        </ul>
 
-        <h3>FOLLOW-UP COMMUNICATION:</h3>
-        <p>
-            We’ll handle all follow-ups with stations to secure airplay and maintain engagement with the radio community. You will receive regular updates on the status of your submissions, interviews, and radio play.
-        </p>
-
-        <h3>DEDICATED ARTIST PROMOTION:</h3>
-        <p>
-            We'll craft personalized press releases and radio-friendly bios to be sent alongside your music to radio stations. We will ensure that your tracks get the best chance of airplay through effective communication strategies.
-        </p>
-
-        <h3>ESSENTIAL MATERIALS FOR A RADIO PITCH:</h3>
-        <p>
-            <strong>🎶 Radio-Friendly Track:</strong><br>
-            High-quality WAV or 320kbps MP3 format (some stations may require specific file types). No explicit lyrics unless the station allows it.
-        </p>
-        <p>
-            <strong>📣 Press Release:</strong><br>
-            We will write a short and engaging press release about you and the track(s). We will include all relevant details inclusive of upcoming album launches, gigs / tours, online presence, notable achievements and previous airplay.
-        </p>
-        <p>
-            <strong>📝 Radio-Friendly Bio:</strong><br>
-            As a part of the press release we will write concise artist bio tailored for radio presenters.
-        </p>
-        <p>
-            <strong>📞 Track Metadata & Contact Details:</strong><br>
-            Please provide all relevant details including: song title, your name, genre, release date, and social media links.
-        </p>
-        <p>
-            <strong>🎙️ Suggested Talking Points (For Interviews):</strong><br>
-            For the sake of interviews we will include a short Q&A guide with all topics you are open to discussing and topics you do not wish to discuss.
-        </p>
+        <h3>WHAT YOU PROVIDE TO US:</h3>
+        <p>To kickstart your radio pitching campaign, we'll need the following:</p>
+        <ul>
+            <li>
+                <strong>🎶 Radio-Ready Track(s):</strong><br>
+                Your music in high-quality WAV or 320kbps MP3 format. Please ensure you have clean/radio-edit versions if your track contains explicit lyrics.
+            </li>
+            <li>
+                <strong>📝 Track Metadata:</strong><br>
+                Full song title, artist name, genre, official release date (or planned date), and ISRC code (if available).
+            </li>
+            <li>
+                <strong>📸 High-Resolution Artist Photos:</strong><br>
+                Professional images suitable for media use.
+            </li>
+            <li>
+                <strong>🔗 Relevant Links:</strong><br>
+                Your official website, social media profiles, and any previous notable press or airplay.
+            </li>
+            <li>
+                <strong>🎙️ Interview Preferences (Optional):</strong><br>
+                A clear indication of topics you are comfortable discussing (and topics to avoid) for potential radio interviews.
+            </li>
+        </ul>
 
         <h3>WHAT TO EXPECT:</h3>
         <p>
-            Remember, success is gradual and every action is a building block for the future.
+            Radio success is built step-by-step, and every pitch is a building block for your future momentum.
         </p>
         <p>
-            While we’ll do everything in our power to get your track on the air, **radio airplay is not guaranteed.** The final decision lies with the individual stations.
+            While we dedicate our full expertise to getting your track on the air, please understand that <strong>radio airplay is not guaranteed.</strong> The final decision rests solely with individual radio stations and their programming decisions.
         </p>
         <p>
-            Stations may not always provide immediate feedback or airplay, but we ensure you’ll be kept in the loop every step of the way.
+            Stations may not always provide immediate feedback or airplay, but we commit to keeping you in the loop with transparent updates every step of the way.
         </p>
         <p style="margin-bottom: 2rem;">
-            We’ll take care of follow-ups, but the response rate may vary depending on the station’s rotation schedules and the season of the year.
+            We handle all follow-ups, but the response rate can vary based on station rotation schedules, seasonal programming, and other external factors.
         </p>
 
         <p class="last-paragraph">
-            Let’s amplify your next release and start building the momentum your career deserves. If you’re an independent artist or label looking for real results and hands-on support, we’re here to make it happen. Reach out today to kick off your campaign — we’ll walk you through the next steps, gather the essentials, and start connecting your music with the stations that matter.
+            Ready to take your music from your studio to the airwaves? Let's work together to amplify your next release and start building the radio momentum your career deserves. If you’re an independent artist or label seeking real results and hands-on support in the Australian radio landscape, we’re here to make it happen. Reach out today to discuss your next steps!
         </p>
 
         <div class="button-container">
-            <button class="hero-button">GET IN TOUCH</button>
+            <button class="hero-button" onclick="location.href='contact.html'">GET IN TOUCH</button>
         </div>
     </section>
 
