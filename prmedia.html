@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PR & Media Outreach - Creative365</title>
+    <title>PR & Media Outreach - Live Wire Management</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Oswald:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
     <style>
         /* Universal Box-sizing and Base Styles */
@@ -14,7 +14,7 @@
         }
         body {
             font-family: 'Nunito Sans', sans-serif;
-            background-color: #f7f7f7;
+            background-color: #f7f7f7; /* Light grey background */
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
@@ -23,13 +23,21 @@
 
         /* Header Styles */
         header {
-            background-color: #000;
+            background-color: #000; /* Black header */
             color: #fff;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
+            position: fixed; /* Changed to fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.3s ease-out; /* For hide/show animation */
+        }
+        header.hidden {
+            transform: translateY(-100%); /* Move header up to hide */
         }
         .logo img {
             height: 45px; /* Adjusted logo height for better balance */
@@ -70,7 +78,7 @@
             top: 100%; /* Positions it right below the header */
             left: 0;
             width: 100%;
-            background-color: #000;
+            background-color: #000; /* Black mobile nav background */
             z-index: 15;
             text-align: center;
         }
@@ -85,14 +93,36 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        /* Hero Section Styles (not used on this page, but kept for consistency if needed) */
+        /* Hero Section Styles */
         .hero {
             width: 100%;
             padding: 4rem 0;
             background: #383838;
             color: #fff;
+            padding-top: calc(4rem + 65px); /* Adjust for fixed header height */
         }
 
+        /* Hero Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero .scroll-wrapper,
+        .hero-paragraph,
+        .hero-paragraph-quiz,
+        .hero-button {
+            opacity: 0; /* Hidden by default */
+            animation: fadeIn 1s ease-out forwards; /* Apply animation */
+        }
+
+        .hero .scroll-wrapper { animation-delay: 0.2s; }
+        .hero-paragraph { animation-delay: 0.5s; }
+        .hero-paragraph-quiz { animation-delay: 0.8s; }
+        .hero-button { animation-delay: 1.1s; }
+
+
+        /* Inner container for hero content to constrain width */
         .hero-inner {
             max-width: 800px;
             margin: 0 auto;
@@ -106,20 +136,47 @@
             text-align: center;
         }
 
-        .desktop-line1, .desktop-line2, .mobile-line1, .mobile-line2 {
-            display: none; /* Hidden on this page */
+        /* Desktop Hero Text Lines */
+        .desktop-line1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            display: block;
+        }
+        .desktop-line2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            white-space: nowrap;
+            margin-top: 0.5rem;
+        }
+        .desktop-line2 span:first-child {
+            flex-shrink: 0;
         }
 
-        .hero-paragraph, .hero-paragraph-quiz {
+        /* Hide mobile specific elements by default on desktop */
+        .mobile-line1, .mobile-line2 {
+            display: none;
+        }
+
+        /* Styles for paragraphs within the hero section */
+        .hero-paragraph {
             margin-top: 1.5rem;
             font-style: italic;
+            font-size: 1.30rem;
+            line-height: 1.5;
+        }
+        .hero-paragraph-quiz {
+            margin-top: 0.5rem;
             font-size: 1.30rem;
             line-height: 1.5;
         }
 
         /* Hero Button Styles */
         .hero-button {
-            background-color: #78C976;
+            background-color: #78C976; /* Green button */
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -130,76 +187,27 @@
             cursor: pointer;
             margin-top: 2rem;
             transition: background-color 0.3s ease;
+            text-decoration: none; /* Ensure no underline on links */
+            display: inline-block; /* Allows padding and margins */
         }
         .hero-button:hover {
-            background-color: #5fae60;
+            background-color: #5fae60; /* Darker green on hover */
         }
 
-        /* Panel, CTA, and Services Section Styles */
-        .main-content-section { /* Custom class for this page's main content */
+        /* --- Main Content Sections (matching homepage .content-section) --- */
+        .content-section {
             max-width: 800px;
-            margin: 4rem auto; /* Increased margin top/bottom for sections */
-            padding: 0 1rem; /* Added horizontal padding for content */
+            margin: 4rem auto;
+            padding: 0 1rem;
             text-align: left;
-            font-size: 1.15rem; /* Slightly smaller base font for content for better readability */
-            color: #333; /* Darker text for main content */
-        }
-        .main-content-section p {
-            margin-bottom: 1rem; /* Add consistent bottom margin to paragraphs */
-            line-height: 1.7; /* Increased line height for better readability */
-        }
-
-        /* H2 & H3 font change */
-        h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.2rem; /* Adjusted font size for h2 elements */
-            margin-bottom: 2.5rem; /* Added bottom margin for main heading */
-            text-align: center; /* Center main heading */
-            color: #222; /* Consistent dark color */
-        }
-        h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.7rem; /* Adjusted font size for subheadings */
-            margin-top: 2.5rem; /* Space before subheadings */
-            margin-bottom: 1rem; /* Space after subheadings */
-            color: #333;
-        }
-        .main-content-section ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-            padding-left: 1rem; /* Indent list items */
-        }
-        .main-content-section ul li {
-            margin-bottom: 0.5rem;
-            padding-left: 1rem; /* Indent list items */
-            position: relative;
-        }
-        .main-content-section ul li::before {
-            content: '✔️ ';
-            margin-right: 5px;
-            position: absolute;
-            left: -0.5rem; /* Adjust icon position */
-            color: #78C976; /* Green checkmark */
-        }
-        .main-content-section strong {
-            display: block; /* Makes the strong tag take full width, pushing text below */
-            margin-bottom: 0.5rem; /* Space between title and description */
-            font-size: 1.25rem; /* Slightly larger font for bolded titles */
+            font-size: 1.25rem;
             color: #222;
         }
-        .last-paragraph {
-            margin-top: 2rem; /* Extra space before the last contact paragraph */
+        .content-section p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
         }
-        .button-container {
-            text-align: center; /* Center the button */
-            margin-top: 3rem; /* Space above the button */
-            margin-bottom: 4rem; /* Space below the button */
-        }
-
-        /* Intro quote specific styles */
-        .intro-quote {
+        .intro-quote { /* Specific for the initial quote */
             font-family: 'Oswald', sans-serif;
             font-size: 2.2rem;
             font-weight: 700;
@@ -209,13 +217,163 @@
             text-align: center;
         }
 
+        /* H2 & H3 font change for main content sections */
+        h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #222;
+        }
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        /* New Panel Section for "Services" and "How it works" */
+        .details-panel-section {
+            background-color: #eaeaea; /* Light grey background */
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .details-panels-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .detail-panel {
+            background-color: #ffffff; /* White panel background */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            max-width: 350px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(50px); /* Start below final position */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+        }
+        .detail-panel.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .detail-panel h3 { /* Using h3 for consistent styling but making it look like a list item title */
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.7rem; /* Keep main H3 size */
+            color: #333;
+            margin-bottom: 0.5rem; /* Closer to paragraph */
+            margin-top: 0; /* Remove top margin from default h3 */
+            text-align: left;
+        }
+        .detail-panel p {
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 1rem; /* Space after paragraph */
+            flex-grow: 1;
+            text-align: left;
+        }
+        /* Contact Section (using homepage style) */
+        .contact-section {
+            background-color: #000; /* Black background */
+            padding: 4rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+        .contact-section h2 {
+            color: #fff; /* White heading */
+        }
+        .contact-section p {
+            margin-bottom: 2.5rem;
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .button-container {
+            text-align: center; /* Center the button */
+            margin-top: 3rem; /* Space above the button */
+            margin-bottom: 4rem; /* Space below the button */
+        }
+
+
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
         @media (max-width: 767px) {
-            .main-content-section {
+            /* Show hamburger menu and hide desktop nav on mobile */
+            .hamburger-menu {
+                display: flex;
+            }
+            nav.desktop-nav {
+                display: none;
+            }
+            /* Apply smaller header padding only on mobile */
+            header {
+                padding: 0.8rem 2rem;
+            }
+            .logo {
+                margin-left: -1rem;
+            }
+            header {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                padding-top: calc(3rem + 55px); /* Adjust for mobile fixed header height */
+            }
+
+            /* Hide desktop specific hero text */
+            .desktop-line1, .desktop-line2 {
+                display: none;
+            }
+
+            /* Show mobile specific hero text */
+            .mobile-line1 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.25rem;
+            }
+            .mobile-line2 {
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: 700;
+                text-align: center;
+                user-select: none;
+                font-size: 2.7rem;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+
+            .hero-button {
+                margin-top: 1.5rem;
+            }
+
+            /* Content sections mobile adjustments */
+            .content-section {
                 width: 90%;
                 margin: 3rem auto;
-                padding: 0; /* Remove horizontal padding on main section for mobile */
-                font-size: 1rem; /* Smaller base font for mobile content */
+                padding: 0;
+                font-size: 1.1rem;
             }
             h2 {
                 font-size: 1.8rem;
@@ -223,39 +381,45 @@
             }
             h3 {
                 font-size: 1.5rem;
-                margin-top: 2rem;
+                margin-top: 1.5rem;
                 margin-bottom: 0.8rem;
             }
-            .main-content-section p {
-                margin-bottom: 0.8rem;
-                line-height: 1.6;
-            }
-            .main-content-section strong {
-                font-size: 1.15rem;
-            }
-            .hero-button {
-                margin-top: 1.5rem;
-            }
-            .main-content-section ul {
-                padding-left: 0.5rem; /* Adjust indent for mobile */
-            }
-            .main-content-section ul li {
-                padding-left: 1rem; /* Adjust indent for mobile */
-            }
-            .main-content-section ul li::before {
-                left: 0; /* Adjust icon position for mobile */
-            }
-            .last-paragraph {
-                margin-top: 1.5rem;
-            }
-            .button-container {
-                margin-top: 2rem;
-                margin-bottom: 3rem;
+            .content-section p {
+                margin-bottom: 1rem;
             }
             .intro-quote {
                 font-size: 1.8rem;
                 margin-top: 1rem;
                 margin-bottom: 1.5rem;
+            }
+            
+            /* Details panels mobile adjustments */
+            .details-panel-section {
+                padding: 3rem 1rem;
+            }
+            .detail-panel {
+                min-width: 90%; /* Forces stacking */
+                max-width: 95%; /* Adjusted for better mobile padding */
+                padding: 1.5rem;
+            }
+            .detail-panel h3 {
+                font-size: 1.5rem;
+            }
+            .detail-panel p {
+                font-size: 1.1rem;
+            }
+
+            /* Contact section mobile adjustments */
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+            .contact-section p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            .button-container {
+                margin-top: 2rem;
+                margin-bottom: 3rem;
             }
         }
     </style>
@@ -263,7 +427,7 @@
 <body>
     <header>
         <a href="index.html" class="logo">
-            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Creative365 Logo" />
+            <img src="https://github.com/mmp03patane/LWM/blob/main/LWM.logo-min.jpg?raw=true" alt="Live Wire Management Logo" />
         </a>
         <div class="hamburger-menu" onclick="toggleMobileMenu()">
             <div class="bar"></div>
@@ -271,73 +435,155 @@
             <div class="bar"></div>
         </div>
         <nav class="desktop-nav">
-            <a href="index.html">Home</a>
-            <a href="#">Contact</a>
+            <a href="radiopitching.html">Radio Pitching</a>
+            <a href="prmedia.html">PR & Media Outreach</a>
+            <a href="music-consultancy.html">Music Consultancy</a>
+            <a href="contact.html">Contact</a>
         </nav>
         <nav class="mobile-nav" id="mobileNav">
-            <a href="index.html" onclick="toggleMobileMenu()">Home</a>
-            <a href="#" onclick="toggleMobileMenu()">Contact</a>
+            <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
+            <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
+            <a href="music-consultancy.html" onclick="toggleMobileMenu()">Music Consultancy</a>
+            <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
         </nav>
     </header>
 
-    <section class="main-content-section">
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="scroll-wrapper desktop-hero">
+                <span class="desktop-line1">GET FEATURED.</span>
+                <div class="desktop-line2">
+                    <span>GET HEARD.</span>
+                </div>
+            </div>
+
+            <div class="scroll-wrapper mobile-hero">
+                <span class="mobile-line1">GET FEATURED.</span>
+                <span class="mobile-line2">GET HEARD.</span>
+            </div>
+            <p class="hero-paragraph">Amplify your music and message with strategic PR & Media Outreach.</p>
+            <p class="hero-paragraph-quiz">Ready to connect with a wider audience?</p>
+
+            <a href="contact.html" class="hero-button">Start Your Campaign!</a>
+        </div>
+    </section>
+
+    <section class="content-section">
         <h2>🎯 PR & MEDIA OUTREACH</h2>
-        <p class="intro-quote">"Get featured... Get heard"</p>
         <p>
-            Comprehensive PR services to help emerging and established artists get the exposure they deserve.
+            Our comprehensive PR services are designed to help emerging and established artists get the exposure they deserve.
+            We craft compelling narratives and connect your music with the right journalists, bloggers, and media outlets, ensuring your story resonates and stands out.
         </p>
+    </section>
 
-        <h3>PRESS RELEASE CREATION & CUSTOMIZATION</h3>
+    <section class="details-panel-section">
+        <h2>WHAT'S INCLUDED?</h2>
+        <div class="details-panels-container">
+            <div class="detail-panel">
+                <h3>Press Release Creation & Customization</h3>
+                <p>We'll curate a press release tailored to your music, event, or news. We work with you to highlight the most important aspects of your story, ensuring it grabs the attention of media and journalists.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Media Research & Outreach</h3>
+                <p>We research and identify relevant music blogs, online magazines, radio stations, and other media outlets that match your genre and story. This is a targeted media list, ensuring your release goes to the right editors and journalists.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Press Release Distribution</h3>
+                <p>We distribute your press release to the curated list of media outlets. This ensures that your story reaches the right people at the right time.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Follow-Up & Tracking</h3>
+                <p>We follow up with media contacts to ensure your press release gets seen. We also track responses and adjust our strategy if needed. Ongoing communication with media outlets increases your chance of success.</p>
+            </div>
+            <div class="detail-panel">
+                <h3>Reporting & Updates</h3>
+                <p>You'll receive a comprehensive report detailing the outlets contacted, media responses, and coverage achieved. We'll also provide insights on which outlets are most likely to pick up future releases, giving you clear and actionable feedback for the future.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>HOW IT WORKS:</h2>
         <p>
-            We will curate a press release tailored to your music, event, or news. We’ll work with you to highlight the most important aspects of your story, ensuring it grabs the attention of media and journalists.
+            **Initial Consultation & Questionnaire:** We'll discuss your music, story, and goals. You'll also fill out a questionnaire listing all relevant information you'd like to include, along with guidance on what information to exclude.
         </p>
-
-        <h3>MEDIA RESEARCH & OUTREACH</h3>
         <p>
-            We research and identify relevant music blogs, online magazines, radio stations, and other media outlets that match your genre and story. This is a targeted media list; ensuring your release goes to the right editors and journalists.
+            **Press Release Creation:** We'll write a compelling press release based on the information you've provided. Estimated turnaround time is 5 business days. You can request one re-write to ensure the message aligns with your brand.
         </p>
-
-        <h3>PRESS RELEASE DISTRIBUTION</h3>
         <p>
-            We distribute your press release to the curated list of media outlets. This ensures that your story reaches the right people at the right time.
+            **Media Outreach:** We will send out your press release to selected outlets.
         </p>
-
-        <h3>FOLLOW-UP & TRACKING</h3>
         <p>
-            We follow up with media contacts to ensure your press release gets seen. We also track responses and adjust our strategy if needed. Ongoing communication with media outlets increases your chance of success.
+            **Follow-Up & Reporting:** We'll follow up with the media, track responses, and provide you with a full report.
         </p>
+    </section>
 
-        <h3>REPORTING & UPDATES</h3>
+    <section class="content-section">
+        <h2>WHY INVEST IN PR?</h2>
         <p>
-            A comprehensive report detailing the outlets contacted, media responses, and coverage achieved. We’ll also provide insights on which outlets are most likely to pick up future releases. This provides clear and actionable feedback for the future.
-        </p>
-
-        <h3>HOW IT WORKS:</h3>
-        <ul>
-            <li><strong>Initial Consultation & Questionnaire:</strong> We’ll discuss your music, story, and goals. Additionally you will fill out a questionnaire listing all relevant information you would like to include as well as guidance on what information to exclude.</li>
-            <li><strong>Press Release Creation:</strong> We’ll write a compelling press release based on the information that you have provided to us. Estimated turn around time is 5 business days. You can request one re-write to ensure the message aligns with your brand.</li>
-            <li><strong>Media Outreach:</strong> We will send out your press release to selected outlets.</li>
-            <li><strong>Follow-Up & Reporting:</strong> We’ll follow up with the media, track responses, and provide you with a full report.</li>
-        </ul>
-
-        <h3>WHY INVEST IN PR?</h3>
-        <p>
-            While no one can guarantee media coverage, strategic PR significantly increases your chances of getting noticed by the right people. In the world of PR, visibility and perceptions matter. Publicity validates your work in the eyes of listeners, promoters, playlist curators, and industry professionals. It’s not just about one article or interview — it’s about building long-term credibility and momentum in the music industry. A well-executed PR campaign helps position you as a serious artist, fosters new opportunities, and puts your name in front of gatekeepers and fans who matter.
+            While no one can guarantee media coverage, strategic PR significantly increases your chances of getting noticed by the right people. In the world of PR, **visibility and perceptions matter.** Publicity validates your work in the eyes of listeners, promoters, playlist curators, and industry professionals. It's not just about one article or interview — it's about building long-term credibility and momentum in the music industry. A well-executed PR campaign helps position you as a serious artist, fosters new opportunities, and puts your name in front of gatekeepers and fans who matter.
         </p>
 
         <p class="last-paragraph">
-            The right narrative opens doors... You’ve got the story — we’ve got the strategy.
+            The right narrative opens doors... You've got the story — we've got the strategy.
         </p>
+    </section>
 
-        <div class="button-container">
-            <button class="hero-button">GET IN TOUCH</button>
-        </div>
+    <section class="contact-section">
+        <h2>READY TO GET YOUR MUSIC NOTICED?</h2>
+        <p>Let's craft your story and share it with the world. Reach out today for a free consultation.</p>
+        <a href="contact.html" class="hero-button">GET IN TOUCH</a>
     </section>
 
     <script>
         function toggleMobileMenu() {
             document.getElementById("mobileNav").classList.toggle("open");
         }
+
+        // --- Header Scroll Logic (copied from homepage) ---
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const headerHeight = header.offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+                // Scrolling down past header height
+                header.classList.add('hidden');
+            } else if (scrollTop < lastScrollTop) {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // --- Scroll-in Animations (copied from homepage) ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 /* Trigger when 10% of element is visible */
+        };
+
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+
+        // Observe the new panels for animation
+        document.querySelectorAll('.detail-panel').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hero section animation for text elements
+        // The hero animation is handled purely by CSS animations with delays,
+        // so no JS observer is strictly needed for the hero text itself.
     </script>
 </body>
 </html>
