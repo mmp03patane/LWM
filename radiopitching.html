@@ -18,7 +18,7 @@
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
-            text-align: center;
+            text-align: center; /* Centering body text */
         }
 
         /* Header Styles */
@@ -53,6 +53,36 @@
             margin-left: 2rem;
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
+        }
+
+        /* Services Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%; /* Position below the "SERVICES" link */
+            left: 0;
+            text-align: left;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin-left: 0; /* Override margin from parent a */
+        }
+        .dropdown-content a:hover {
+            background-color: #333;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hamburger Menu (Hidden by default on desktop) */
@@ -167,11 +197,13 @@
             font-style: italic;
             font-size: 1.30rem;
             line-height: 1.5;
+            text-align: center; /* Ensure hero paragraphs are centered */
         }
         .hero-paragraph-quiz {
             margin-top: 0.5rem;
             font-size: 1.30rem;
             line-height: 1.5;
+            text-align: center; /* Ensure hero quiz paragraph is centered */
         }
 
         /* Hero Button Styles */
@@ -199,13 +231,14 @@
             max-width: 800px;
             margin: 4rem auto;
             padding: 0 1rem;
-            text-align: left;
+            text-align: center; /* Centering content sections */
             font-size: 1.25rem;
             color: #222;
         }
         .content-section p {
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            text-align: center; /* Ensure all paragraphs are centered */
         }
         .intro-quote { /* Specific for the initial quote */
             font-family: 'Oswald', sans-serif;
@@ -231,8 +264,9 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: #333;
+            text-align: center; /* Centering H3 elements */
         }
-        
+       
         /* New Panel Section for "Services" and "What You Provide" */
         .details-panel-section {
             background-color: #eaeaea; /* Light grey background */
@@ -256,7 +290,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             flex: 1;
             max-width: 380px; /* Adjusted max-width for better two-column layout if needed */
-            text-align: left;
+            text-align: center; /* Centering panel content */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -275,7 +309,7 @@
             color: #333;
             margin-bottom: 0.5rem; /* Closer to paragraph */
             margin-top: 0; /* Remove top margin from default h3 */
-            text-align: left;
+            text-align: center; /* Centering panel H3 */
         }
         .detail-panel p {
             font-family: 'Nunito Sans', sans-serif;
@@ -284,7 +318,7 @@
             line-height: 1.5;
             margin-bottom: 1rem; /* Space after paragraph */
             flex-grow: 1;
-            text-align: left;
+            text-align: center; /* Centering panel paragraphs */
         }
         /* Contact Section (using homepage style) */
         .contact-section {
@@ -422,6 +456,18 @@
                 margin-bottom: 3rem;
             }
         }
+
+        /* Desktop Only: "What's included" panels = max 1 per line, stack vertically */
+        @media (min-width: 768px) {
+            .details-panels-container {
+                flex-direction: column; /* Stack panels vertically */
+                align-items: center; /* Center them when stacked */
+            }
+            .detail-panel {
+                max-width: 800px; /* Allow wider panels for desktop when stacked */
+                width: 100%; /* Take full width of container */
+            }
+        }
     </style>
 </head>
 <body>
@@ -435,9 +481,14 @@
             <div class="bar"></div>
         </div>
         <nav class="desktop-nav">
-            <a href="radiopitching.html">Radio Pitching</a>
-            <a href="prmedia.html">PR & Media Outreach</a>
-            <a href="music-consultancy.html">Music Consultancy</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn">SERVICES</a>
+                <div class="dropdown-content">
+                    <a href="radiopitching.html">Radio Pitching</a>
+                    <a href="prmedia.html">PR & Media Outreach</a>
+                    <a href="music-consultancy.html">Music Consultancy</a>
+                </div>
+            </div>
             <a href="contact.html">Contact</a>
         </nav>
         <nav class="mobile-nav" id="mobileNav">
