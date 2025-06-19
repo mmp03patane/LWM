@@ -18,7 +18,7 @@
             color: #222;
             line-height: 1.6;
             font-size: 1.25rem;
-            text-align: center;
+            text-align: center; /* Centered all paragraphs and text by default */
         }
 
         /* Header Styles */
@@ -46,6 +46,7 @@
         /* Desktop Navigation */
         nav.desktop-nav {
             display: block; /* Default to block for desktop */
+            position: relative; /* Needed for dropdown positioning */
         }
         nav.desktop-nav a {
             color: #fff;
@@ -53,6 +54,41 @@
             margin-left: 2rem;
             font-family: 'Roboto', sans-serif;
             text-transform: uppercase;
+        }
+
+        /* Dropdown for Services */
+        .dropdown {
+            position: relative;
+            display: inline-block; /* Allows "SERVICES" to sit next to other nav items */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #000; /* Black background for dropdown */
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            left: -1rem; /* Adjust positioning as needed */
+            top: 100%; /* Position below the "SERVICES" link */
+            text-align: center; /* Center dropdown items */
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-left: 0; /* Reset margin for dropdown items */
+        }
+
+        .dropdown-content a:hover {
+            background-color: #333; /* Darker background on hover */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hamburger Menu (Hidden by default on desktop) */
@@ -92,6 +128,22 @@
             text-transform: uppercase;
             font-family: 'Roboto', sans-serif;
         }
+
+        /* Mobile Dropdown */
+        .mobile-dropdown-content {
+            display: none;
+            background-color: #222; /* Slightly different background for sub-menu */
+        }
+
+        .mobile-dropdown-content a {
+            padding-left: 2rem; /* Indent sub-menu items */
+            font-size: 1rem; /* Slightly smaller font for sub-menu */
+        }
+
+        .mobile-dropdown.open .mobile-dropdown-content {
+            display: block;
+        }
+
 
         /* Hero Section Styles */
         .hero {
@@ -167,11 +219,13 @@
             font-style: italic;
             font-size: 1.30rem;
             line-height: 1.5;
+            text-align: center; /* Ensure hero paragraphs are centered */
         }
         .hero-paragraph-quiz {
             margin-top: 0.5rem;
             font-size: 1.30rem;
             line-height: 1.5;
+            text-align: center; /* Ensure hero paragraphs are centered */
         }
 
         /* Hero Button Styles */
@@ -199,13 +253,14 @@
             max-width: 800px;
             margin: 4rem auto;
             padding: 0 1rem;
-            text-align: left;
+            text-align: center; /* Centered all paragraphs */
             font-size: 1.25rem;
             color: #222;
         }
         .content-section p {
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            text-align: center; /* Ensure content section paragraphs are centered */
         }
         .intro-quote { /* Specific for the initial quote */
             font-family: 'Oswald', sans-serif;
@@ -231,6 +286,7 @@
             margin-top: 2rem;
             margin-bottom: 1rem;
             color: #333;
+            text-align: center; /* Centered all h3s */
         }
 
         /* New Panel Section for "What's Included" */
@@ -256,7 +312,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             flex: 1;
             max-width: 350px;
-            text-align: left;
+            text-align: center; /* Centered text in panels */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -275,7 +331,7 @@
             color: #333;
             margin-bottom: 0.5rem; /* Closer to paragraph */
             margin-top: 0; /* Remove top margin from default h3 */
-            text-align: left;
+            text-align: center; /* Ensure h3 in panel is centered */
         }
         .detail-panel p {
             font-family: 'Nunito Sans', sans-serif;
@@ -284,7 +340,7 @@
             line-height: 1.5;
             margin-bottom: 1rem; /* Space after paragraph */
             flex-grow: 1;
-            text-align: left;
+            text-align: center; /* Ensure paragraphs in panel are centered */
         }
         .detail-panel p::before {
             content: '✔️ ';
@@ -307,13 +363,26 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-align: center;
+            text-align: center; /* Ensure contact section paragraphs are centered */
         }
         .button-container {
             text-align: center; /* Center the button */
             margin-top: 3rem; /* Space above the button */
             margin-bottom: 4rem; /* Space below the button */
         }
+
+        /* --- MEDIA QUERIES FOR DESKTOP (min-width: 768px) --- */
+        @media (min-width: 768px) {
+            .details-panels-container {
+                flex-direction: column; /* Stack panels vertically on desktop */
+                align-items: center; /* Center the stacked panels */
+            }
+
+            .detail-panel {
+                max-width: 700px; /* Limit width of panels when stacked on desktop */
+            }
+        }
+
 
         /* --- MEDIA QUERIES FOR MOBILE (max-width: 767px) --- */
         @media (max-width: 767px) {
@@ -439,15 +508,25 @@
             <div class="bar"></div>
         </div>
         <nav class="desktop-nav">
-            <a href="radiopitching.html">Radio Pitching</a>
-            <a href="prmedia.html">PR & Media Outreach</a>
-            <a href="music-consultancy.html">Music Consultancy</a>
+            <div class="dropdown">
+                <a href="#">SERVICES</a>
+                <div class="dropdown-content">
+                    <a href="radiopitching.html">Radio Pitching</a>
+                    <a href="prmedia.html">PR & Media Outreach</a>
+                    <a href="music-consultancy.html">Music Consultancy</a>
+                </div>
+            </div>
             <a href="contact.html">Contact</a>
         </nav>
         <nav class="mobile-nav" id="mobileNav">
-            <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
-            <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
-            <a href="music-consultancy.html" onclick="toggleMobileMenu()">Music Consultancy</a>
+            <div class="mobile-dropdown">
+                <a href="#" onclick="toggleMobileDropdown(event)">SERVICES</a>
+                <div class="mobile-dropdown-content">
+                    <a href="radiopitching.html" onclick="toggleMobileMenu()">Radio Pitching</a>
+                    <a href="prmedia.html" onclick="toggleMobileMenu()">PR & Media Outreach</a>
+                    <a href="music-consultancy.html" onclick="toggleMobileMenu()">Music Consultancy</a>
+                </div>
+            </div>
             <a href="contact.html" onclick="toggleMobileMenu()">Contact</a>
         </nav>
     </header>
@@ -546,6 +625,13 @@
     <script>
         function toggleMobileMenu() {
             document.getElementById("mobileNav").classList.toggle("open");
+        }
+
+        // Function to toggle the mobile dropdown
+        function toggleMobileDropdown(event) {
+            event.preventDefault(); // Prevent default link behavior
+            const parent = event.target.closest('.mobile-dropdown');
+            parent.classList.toggle('open');
         }
 
         // --- Header Scroll Logic (copied from homepage) ---
